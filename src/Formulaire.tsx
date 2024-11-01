@@ -57,6 +57,20 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       </label>
 
       <div className="flex space-x-4 mb-4">
+        
+      <label className="flex items-center font-bold gap-2 mb-4">
+  <input
+    type="number"
+    value={quantite}
+    onChange={(e) => setQuantite(e.target.value)}
+    placeholder="Nb"
+    required
+      min="1"
+    maxLength={4} // Limiter le nombre de caractères à 3
+    className="w-16 p-2 border border-gray-300 rounded" // Ajuster la largeur de l'input
+  />
+</label>
+
         {[ 
           { src: './src/assets/spoon.png', label: 'cuilleres' },
           { src: './src/assets/tablet.png', label: 'cachets' },
@@ -75,16 +89,6 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         ))}
       </div>
 
-      <label className="flex items-center font-bold gap-2 mb-4">
-        <input
-          type="number"
-          value={quantite}
-          onChange={(e) => setQuantite(e.target.value)}
-          placeholder="Nb"
-          required
-          className="flex-grow p-2 border border-gray-300 rounded"
-        />
-      </label>
 
       <div className="flex space-x-4 mb-4">
         {[
@@ -105,19 +109,22 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           </div>
          
         ))}
-      </div>
+    
 
-      <label className="flex items-center font-bold gap-2 mb-4">
-        Durée (jr) :
-        <input
-          type="number"
-          value={jours}
-          onChange={(e) => setJours(Number(e.target.value))}
-          min="1"
-          required
-          className="flex-grow p-2 border border-gray-300 rounded"
-        />
-      </label>
+    <label className="flex items-center font-bold gap-2 mb-4">
+  Durée (jr) :
+  <input
+    type="number" // Vous pouvez conserver "number", mais l'attribut maxLength n'aura pas d'effet ici
+    value={jours}
+    onChange={(e) => setJours(Number(e.target.value))}
+    min="1"
+    max={9999} // Limite le maximum à 9999 pour un input type="number"
+    required
+    className="w-20 p-2 border border-gray-300 rounded" // Ajuster la largeur de l'input
+  />
+</label>
+
+      </div>
 
       <button
         type="submit"

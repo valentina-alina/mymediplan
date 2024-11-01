@@ -13,6 +13,7 @@ type Medicament = {
 
 const App: React.FC = () => {
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
+  const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]); // État pour la liste des médicaments
 
   const ajouterMedicament = (medicament: Medicament) => {
     const updatedJoursData = { ...joursData };
@@ -26,13 +27,14 @@ const App: React.FC = () => {
     }
 
     setJoursData(updatedJoursData);
+    setMedicamentsList((prev) => [...prev, medicament]); // Ajouter à la liste des médicaments
   };
 
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Gestion des Médicaments</h1>
       <Formulaire onAddMedicament={ajouterMedicament} />
-      {/* <ListeMedicaments joursData={joursData} /> */}
+      <ListeMedicaments medicaments={medicamentsList} /> {/* Passer la liste à ListeMedicaments */}
       <Tableau joursData={joursData} />
     </div>
   );

@@ -28,8 +28,27 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   const getDateForDay = (day: number) => {
     const date = new Date();
     date.setDate(date.getDate() + day - 1);
-    return date.toLocaleDateString();
+  
+    // Obtenir le nom du jour et la date dans le format souhaité
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',   // 'long' pour le nom complet du jour
+      year: 'numeric',    // Année au format numérique
+      month: '2-digit',   // Mois au format à deux chiffres
+      day: '2-digit'      // Jour au format à deux chiffres
+    };
+  
+    // Formatage de la date
+    const formattedDate = date.toLocaleDateString('fr-FR', options);
+  
+    // Enlever l'éventuelle virgule
+    const parts = formattedDate.split(', ');
+    const nomDuJour = parts[0]; // Le nom du jour
+    const dateSansNom = parts.length > 1 ? parts[1] : ''; // La date sans le nom du jour
+  
+    return `${nomDuJour} ${dateSansNom}`.trim(); // Format final : "nom du jour dd/mm/yyyy"
   };
+  
+  
 
   const renderImages = (type: string, quantity: number) => {
     const imageSrc = typeImages[type];
@@ -52,10 +71,46 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
           <tr className="bg-gray-100">
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Jour</th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Date</th>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Matin</th>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Midi</th>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Après-midi</th>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Soir</th>
+            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
+            <img
+            key='matin'
+            src="./src/assets/matin.jpg" 
+            alt="matin"
+          
+            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+          />
+          <p>Matin</p>
+            </th>
+            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
+            <img
+            key='Midi'
+            src="./src/assets/Midi.jpg" 
+            alt="Midi"
+          
+            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+          />
+          <p>Aprés midi</p>
+            </th>
+            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
+            <img
+            key='apresmidi'
+            src="./src/assets/apresmidi.jpg" 
+            alt="apresmidi"
+          
+            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+          />
+          <p>Soir</p>
+            </th>
+            <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
+            <img
+            key='soir'
+            src="./src/assets/soir.jpg" 
+            alt="soir"
+          
+            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+          />
+          <p>Midi</p>
+            </th>
           </tr>
         </thead>
         <tbody>

@@ -15,19 +15,22 @@ type ListeMedicamentsProps = {
 const ListeMedicaments: React.FC<ListeMedicamentsProps> = ({ medicaments }) => {
   return (
     <div>
-      <h2>Liste des Médicaments</h2>
+      <h2 className=''>Liste des Médicaments</h2>
       <ul className="liste-medicaments">
         {medicaments.map((medicament, index) => (
           <li key={index} className="medicament-item">
-            <span>{medicament.nom} - {medicament.quantite} {medicament.typeQuantite} - {medicament.jours} jours</span>
-            <div className="horaires">
-              <strong>Horaires:</strong>
-              {medicament.horaires.matin && <span> Matin</span>}
-              {medicament.horaires.midi && <span> Midi</span>}
-              {medicament.horaires.apresmidi && <span> Après-midi</span>}
-              {medicament.horaires.soir && <span> Soir</span>}
-            </div>
+           <strong>{medicament.nom} :</strong>
+            <span> {medicament.quantite} {medicament.typeQuantite} :</span>  
+            {/* <div className="horaires"> */}
+              {/* <strong>Horaires:</strong> */}
+              {medicament.horaires.matin && <span> Matin </span>}
+              {medicament.horaires.midi && <span>+ Midi</span>}
+              {medicament.horaires.apresmidi && <span> + Après-midi</span>}
+              {medicament.horaires.soir && <span> + Soir</span>}
+            {/* </div> */}
+            <span>  pendant {medicament.jours} jours</span>
           </li>
+          
         ))}
       </ul>
     </div>
