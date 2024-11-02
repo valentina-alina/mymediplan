@@ -1,4 +1,5 @@
 import React from 'react';
+import Horloge from './Horloge';
 
 type Medicament = {
   nom: string;
@@ -14,7 +15,7 @@ type TableauProps = {
 
 // Dictionnaire pour les images des types de quantité
 const typeImages: { [key: string]: string } = {
-  cuilleres: './src/assets/spoon.png',
+  cuilleres: './src/assets/spoon.svg',
   cachets: './src/assets/tablet.png',
   sachets: './src/assets/sachet.jpg',
   unites: './src/assets/seringue.webp',
@@ -72,44 +73,36 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Jour</th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Date</th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='matin'
-            src="./src/assets/matin.jpg" 
-            alt="matin"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+            <Horloge
+            heureDebutInitiale={7}
+            heureFinInitiale={9}
+            texteFinal={'Matin'}
+            afficherHeures={false}
           />
-          <p>Matin</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='Midi'
-            src="./src/assets/Midi.jpg" 
-            alt="Midi"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+            <Horloge
+            heureDebutInitiale={12}
+            heureFinInitiale={1}
+            texteFinal={'Midi'}
+            afficherHeures={false}
           />
-          <p>Aprés midi</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='apresmidi'
-            src="./src/assets/apresmidi.jpg" 
-            alt="apresmidi"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+            <Horloge
+            heureDebutInitiale={4}
+            heureFinInitiale={5}
+            texteFinal={'Aprés-midi'}
+            afficherHeures={false}
           />
-          <p>Soir</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='soir'
-            src="./src/assets/soir.jpg" 
-            alt="soir"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+            <Horloge
+            heureDebutInitiale={7}
+            heureFinInitiale={8}
+            texteFinal={'Soir'}
+            afficherHeures={false}
           />
-          <p>Midi</p>
             </th>
           </tr>
         </thead>

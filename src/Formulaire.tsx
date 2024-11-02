@@ -74,12 +74,12 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </label>
 
         {[
-          { src: './src/assets/spoon.png', label: 'cuilleres' },
+          { src: './src/assets/spoon.svg', label: 'cuilleres' },
           { src: './src/assets/tablet.png', label: 'cachets' },
           { src: './src/assets/sachet.jpg', label: 'sachets' },
-          { src: './src/assets/seringue.webp', label: 'unites' },
+          { src: './src/assets/syringe.svg', label: 'unites' },
           { src: './src/assets/inhaler.png', label: 'bouffees' },
-          { src: './src/assets/seringue.png', label: 'kg' },
+          { src: './src/assets/efervescent.jpg', label: 'kg' },
         ].map(({ src, label }) => (
           <img
             key={label}
@@ -100,18 +100,20 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           { label: 'Soir', value: 'soir', heureDebut: 7, heureFin: 8 },
         ].map(({ label, heureDebut, heureFin, value }) => (
           <div
-            key={label}
-            onClick={() => toggleHoraire(value as keyof typeof horaires)}
-            className={`cursor-pointer p-2 ${typeQuantite === label ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
-              } rounded`}
-          >
-            <Horloge
-              heureDebutInitiale={heureDebut}
-              heureFinInitiale={heureFin}
-              texteFinal={label}
-              afficherHeures={true}
-            />
-          </div>
+          key={value}
+          onClick={() => toggleHoraire(value as keyof typeof horaires)}
+          className={`cursor-pointer p-2 ${
+            horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
+          } rounded`}
+        >
+          <Horloge
+            heureDebutInitiale={heureDebut}
+            heureFinInitiale={heureFin}
+            texteFinal={label}
+            afficherHeures={false}
+          />
+        </div>
+        
         ))}
 
 
