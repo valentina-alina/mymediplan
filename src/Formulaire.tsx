@@ -91,7 +91,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       
       <div>
 
-        <label className="flex items-center font-bold gap-2 mb-4">
+        <label className="flex items-center gap-2 mb-4 text-black dark:text-black">
           Durée (jr) :
           <input
             type="number" // Vous pouvez conserver "number", mais l'attribut maxLength n'aura pas d'effet ici
@@ -104,11 +104,11 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
         </label>
       </div>
-      <div className="flex space-x-4 mb-4">
+      <div className="flex space-x-4 mb-4 text-black dark:text-black">
         {[
           { label: 'Matin', value: 'matin', src: './src/assets/matin.jpg' }, // garder le texte seulement sur la version portable
           { label: 'Midi', value: 'midi', src: './src/assets/midi.jpg' },
-          { label: 'Après-midi', value: 'apresmidi', src: './src/assets/apresmidi.jpg' },
+          { label: 'Après-midi', value: 'après-midi', src: './src/assets/apresmidi.jpg' },
           { label: 'Soir', value: 'soir', src: './src/assets/soir.jpg' },
         ].map(({ label, value, src }) => (
           <div>
