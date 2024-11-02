@@ -72,44 +72,44 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Jour</th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Date</th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='matin'
-            src="./src/assets/matin.jpg" 
-            alt="matin"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
-          />
-          <p>Matin</p>
+              <img
+                key='matin'
+                src="./src/assets/matin.jpg" 
+                alt="matin"
+              
+                className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+              />
+              <p>Matin</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='Midi'
-            src="./src/assets/Midi.jpg" 
-            alt="Midi"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
-          />
-          <p>Après-midi</p>
+              <img
+                key='soir'
+                src="./src/assets/soir.jpg" 
+                alt="soir"
+              
+                className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+              />
+              <p>Midi</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='apresmidi'
-            src="./src/assets/apresmidi.jpg" 
-            alt="apresmidi"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
-          />
-          <p>Soir</p>
+              <img
+                key='Midi'
+                src="./src/assets/Midi.jpg" 
+                alt="Midi"
+              
+                className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+              />
+              <p>Après-midi</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
-            <img
-            key='soir'
-            src="./src/assets/soir.jpg" 
-            alt="soir"
-          
-            className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
-          />
-          <p>Midi</p>
+              <img
+                key='apresmidi'
+                src="./src/assets/apresmidi.jpg" 
+                alt="apresmidi"
+              
+                className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
+              />
+              <p>Soir</p>
             </th>
           </tr>
         </thead>

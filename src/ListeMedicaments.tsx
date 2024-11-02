@@ -15,7 +15,7 @@ type ListeMedicamentsProps = {
 const ListeMedicaments: React.FC<ListeMedicamentsProps> = ({ medicaments }) => {
   return (
     <div>
-      <h2 className='font-h1'>Liste des Médicaments</h2>
+      <h2 className='font-h1 my-5'>Liste des Médicaments</h2>
       <ul className="liste-medicaments">
         {medicaments.map((medicament, index) => (
           <li key={index} className="medicament-item">

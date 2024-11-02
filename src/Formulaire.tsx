@@ -44,7 +44,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
+    <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg mb-7">
       <label className="flex items-center font-bold gap-2 mb-4">
         <input
           type="text"
@@ -52,25 +52,25 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           onChange={(e) => setNom(e.target.value)}
           placeholder="Nom du médicament"
           required
-          className="flex-grow p-2 border border-gray-300 rounded font-h1"
+          className="w-96 p-2 border border-gray-300 rounded font-h1"
         />
       </label>
 
       <div className="flex space-x-4 mb-4">
-        
-      <label className="flex items-center font-bold gap-2 mb-4">
-  <input
-    type="number"
-    value={quantite}
-    onChange={(e) => setQuantite(e.target.value)}
-    placeholder="Nb"
-    required
-      min="1"
-    maxLength={4} // Limiter le nombre de caractères à 3
-    className="w-16 p-2 border border-gray-300 rounded font-h1" // Ajuster la largeur de l'input
-  />
-</label>
-
+        <label className="flex items-center font-bold gap-2">
+          <input
+            type="number"
+            value={quantite}
+            onChange={(e) => setQuantite(e.target.value)}
+            placeholder="Nb"
+            required
+              min="1"
+            maxLength={4} // Limiter le nombre de caractères à 3
+            className="w-16 p-2 border border-gray-300 rounded font-h1" // Ajuster la largeur de l'input
+          />
+        </label>
+      </div>
+      <div className='flex space-x-3 mb-4'>
         {[ 
           { src: './src/assets/spoon.png', label: 'cuilleres' },
           { src: './src/assets/pills.png', label: 'cachets' },
@@ -88,8 +88,22 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
         ))}
       </div>
+      
+      <div>
 
-
+        <label className="flex items-center font-bold gap-2 mb-4">
+          Durée (jr) :
+          <input
+            type="number" // Vous pouvez conserver "number", mais l'attribut maxLength n'aura pas d'effet ici
+            value={jours}
+            onChange={(e) => setJours(Number(e.target.value))}
+            min="1"
+            max={9999} // Limite le maximum à 9999 pour un input type="number"
+            required
+            className="w-20 p-2 border border-gray-300 rounded" // Ajuster la largeur de l'input
+          />
+        </label>
+      </div>
       <div className="flex space-x-4 mb-4">
         {[
           { label: 'Matin', value: 'matin', src: './src/assets/matin.jpg' },
@@ -98,37 +112,21 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           { label: 'Soir', value: 'soir', src: './src/assets/soir.jpg' },
         ].map(({ label, value, src }) => (
           <div>
-          <img
-            key={value}
-            src={src}
-            alt={label}
-            onClick={() => toggleHoraire(value as keyof typeof horaires)}
-            className={`w-20 h-20 cursor-pointer p-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : ''}`}
-          />
-          <p>{value}</p>
+            <img
+              key={value}
+              src={src}
+              alt={label}
+              onClick={() => toggleHoraire(value as keyof typeof horaires)}
+              className={`w-20 h-20 cursor-pointer p-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : ''}`}
+            />
+            <p>{value}</p>
           </div>
-
         ))}
-    
-
-    <label className="flex items-center font-bold gap-2 mb-4">
-  Durée (jr) :
-  <input
-    type="number" // Vous pouvez conserver "number", mais l'attribut maxLength n'aura pas d'effet ici
-    value={jours}
-    onChange={(e) => setJours(Number(e.target.value))}
-    min="1"
-    max={9999} // Limite le maximum à 9999 pour un input type="number"
-    required
-    className="w-20 p-2 border border-gray-300 rounded" // Ajuster la largeur de l'input
-  />
-</label>
-
       </div>
 
       <button
         type="submit"
-        className="bg-gray-400 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4 flex items-center justify-center font-h1"
+        className="bg-gray-400 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4 flex items-center justify-center font-h1 w-76"
       >
         Ajouter médicament
         <img className="ml-5" src="./src/assets/add.png" alt="add button image" />

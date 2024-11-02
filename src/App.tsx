@@ -31,7 +31,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 m-1 lg:m-20">
       <h1 className="text-2xl font-bold mb-4 font-navbar">Gestion des Médicaments</h1>
       <Formulaire onAddMedicament={ajouterMedicament} />
       <ListeMedicaments medicaments={medicamentsList} /> {/* Passer la liste à ListeMedicaments */}
