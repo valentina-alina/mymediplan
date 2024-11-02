@@ -106,7 +106,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       </div>
       <div className="flex space-x-4 mb-4">
         {[
-          { label: 'Matin', value: 'matin', src: './src/assets/matin.jpg' },
+          { label: 'Matin', value: 'matin', src: './src/assets/matin.jpg' }, // garder le texte seulement sur la version portable
           { label: 'Midi', value: 'midi', src: './src/assets/midi.jpg' },
           { label: 'Après-midi', value: 'apresmidi', src: './src/assets/apresmidi.jpg' },
           { label: 'Soir', value: 'soir', src: './src/assets/soir.jpg' },

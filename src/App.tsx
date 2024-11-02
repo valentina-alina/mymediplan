@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
+import useTheme from './context/useTheme.ts';
 
 type Medicament = {
   nom: string;
@@ -30,13 +31,28 @@ const App: React.FC = () => {
     setMedicamentsList((prev) => [...prev, medicament]); // Ajouter à la liste des médicaments
   };
 
+  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
-    <div className="p-4 m-1 lg:m-20">
-      <h1 className="text-2xl font-bold mb-4 font-navbar">Gestion des Médicaments</h1>
-      <Formulaire onAddMedicament={ajouterMedicament} />
-      <ListeMedicaments medicaments={medicamentsList} /> {/* Passer la liste à ListeMedicaments */}
-      <Tableau joursData={joursData} />
-    </div>
+    <>
+      <div className="mt-5 p-4 m-1 lg:m-20">
+        <div className="flex space-x-0 lg:space-x-6">
+          <h1 className="text-2xl font-bold mb-4 font-navbar">Gestion des Médicaments</h1>
+          <button
+            onClick={toggleDarkMode}
+            className="p-8 lg:p-6 bg-gray-200 dark:bg-gray-800 rounded-full -mt-7"
+          >
+            {darkMode ? '🌞' : '🌚'}
+          </button>
+        </div>
+        <div className="bg-white text-black dark:bg-gray-900 dark:text-white">
+          <h1 className="text-2xl font-bold">Welcome to My Site</h1>
+        </div>
+        <Formulaire onAddMedicament={ajouterMedicament} />
+        <ListeMedicaments medicaments={medicamentsList} /> {/* Passer la liste à ListeMedicaments */}
+        <Tableau joursData={joursData} />
+      </div>
+    </>
   );
 };
 
