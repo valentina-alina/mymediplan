@@ -107,7 +107,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
           <p>{value}</p>
           </div>
-         
+
         ))}
     
 
@@ -128,9 +128,10 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
       <button
         type="submit"
-        className="bg-teal-600 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4"
+        className="bg-teal-600 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4 flex"
       >
         Ajouter le médicament
+        <img className="ml-5" src="./src/assets/add.png" alt="add button image" />
       </button>
     </form>
   );
