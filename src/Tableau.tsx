@@ -66,7 +66,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full border-collapse border border-gray-200">
+      <table className="min-w-full border-collapse border border-gray-200 font-h1">
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">Jour</th>
@@ -89,7 +89,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
           
             className={`w-20 h-20 cursor-pointer p-2 border-blue-500' : ''}`}
           />
-          <p>Aprés midi</p>
+          <p>Après-midi</p>
             </th>
             <th className="border border-gray-200 px-4 py-2 text-left font-semibold text-gray-700">
             <img

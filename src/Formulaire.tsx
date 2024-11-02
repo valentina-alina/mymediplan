@@ -52,7 +52,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           onChange={(e) => setNom(e.target.value)}
           placeholder="Nom du médicament"
           required
-          className="flex-grow p-2 border border-gray-300 rounded"
+          className="flex-grow p-2 border border-gray-300 rounded font-h1"
         />
       </label>
 
@@ -67,7 +67,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     required
       min="1"
     maxLength={4} // Limiter le nombre de caractères à 3
-    className="w-16 p-2 border border-gray-300 rounded" // Ajuster la largeur de l'input
+    className="w-16 p-2 border border-gray-300 rounded font-h1" // Ajuster la largeur de l'input
   />
 </label>
 
@@ -76,7 +76,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           { src: './src/assets/pills.png', label: 'cachets' },
           { src: './src/assets/bag.png', label: 'sachets' },
           { src: './src/assets/syringe.png', label: 'unites' },
-          { src: './src/assets/inhaler.png', label: 'bouffees' },
+          { src: './src/assets/spray.png', label: 'bouffees' },
           { src: './src/assets/syringe.png', label: 'kg' },
         ].map(({ src, label }) => (
           <img
@@ -128,7 +128,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
       <button
         type="submit"
-        className="bg-gray-400 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4 flex items-center justify-center"
+        className="bg-gray-400 text-white p-2 rounded font-bold hover:bg-teal-500 active:bg-teal-700 mt-4 flex items-center justify-center font-h1"
       >
         Ajouter médicament
         <img className="ml-5" src="./src/assets/add.png" alt="add button image" />
