@@ -7,7 +7,9 @@ type Medicament = {
   typeQuantite: string;
   horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
   jours: number;
+  medicationImage: string | null; 
 };
+
 
 type FormulaireProps = {
   onAddMedicament: (medicament: Medicament) => void;
@@ -24,6 +26,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     apresmidi: false,
     soir: false,
   });
+ 
 
   const selectTypeQuantite = (type: string) => {
     setTypeQuantite(type);
@@ -33,18 +36,46 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     setHoraires((prev) => ({ ...prev, [horaire]: !prev[horaire] }));
     console.log(`Horaire cliqué: ${horaire}`);
   };
-
+  const [medicationImage, setMedicationImage] = useState<string | null>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const medicament: Medicament = { nom, quantite, typeQuantite, horaires, jours };
+    
+    const medicament: Medicament = { 
+      nom, 
+      quantite, 
+      typeQuantite, 
+      horaires, 
+      jours, 
+      medicationImage // Cela peut maintenant être soit une string, soit null
+    };
+  
     onAddMedicament(medicament);
+    
     setNom('');
     setQuantite('');
     setJours(1);
     setTypeQuantite('');
     setHoraires({ matin: false, midi: false, apresmidi: false, soir: false });
+    setMedicationImage(null); // Réinitialisation correcte
   };
+  
 
+
+const handleImageUpload = (event: { target: { files: FileList | null; }; }) => {
+  const file = event.target.files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        setMedicationImage(reader.result);
+        console.log(medicationImage)
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+  
   return (
     <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
       <label className="flex items-center font-bold gap-2 mb-4">
@@ -57,6 +88,12 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           className="flex-grow p-2 border border-gray-300 rounded"
         />
       </label>
+      <input
+  type="file"
+  accept="image/*"
+  onChange={handleImageUpload}
+/>
+
 
       <div className="flex space-x-4 mb-4">
 
