@@ -74,12 +74,12 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </label>
 
         {[
-          { src: './src/assets/spoon.svg', label: 'cuilleres' },
-          { src: './src/assets/tablet.png', label: 'cachets' },
-          { src: './src/assets/sachet.jpg', label: 'sachets' },
-          { src: './src/assets/syringe.svg', label: 'unites' },
-          { src: './src/assets/inhaler.png', label: 'bouffees' },
-          { src: './src/assets/efervescent.jpg', label: 'kg' },
+          { src: '/spoon.svg', label: 'cuilleres' },
+          { src: '/tablet.png', label: 'cachets' },
+          { src: '/bag.png', label: 'sachets' },
+          { src: '/syringe.svg', label: 'unites' },
+          { src: '/inhaler.png', label: 'bouffees' },
+          { src: '/effervescent.png', label: 'efervescent' },
         ].map(({ src, label }) => (
           <img
             key={label}

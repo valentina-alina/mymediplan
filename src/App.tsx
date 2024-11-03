@@ -33,7 +33,7 @@ const App: React.FC = () => {
   return (
     <>
     
-      <h1 className="text-xl font-bold mb-4">Médicaments</h1>
+    <h1 className="text-2xl font-bold mb-4 font-navbar">Gestion des Médicaments</h1>
       <Formulaire onAddMedicament={ajouterMedicament} />
       <ListeMedicaments medicaments={medicamentsList} /> {/* Passer la liste à ListeMedicaments */}
       <Tableau joursData={joursData} />

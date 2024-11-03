@@ -15,12 +15,12 @@ type TableauProps = {
 
 // Dictionnaire pour les images des types de quantité
 const typeImages: { [key: string]: string } = {
-  cuilleres: './src/assets/spoon.svg',
-  cachets: './src/assets/tablet.png',
-  sachets: './src/assets/sachet.jpg',
-  unites: './src/assets/seringue.webp',
-  bouffees: './src/assets/inhaler.png',
-  kg: './src/assets/seringue.png',
+  cuilleres: '/spoon.svg',
+  cachets: '/tablet.png',
+  sachets: '/bag.png',
+  unites: '/syringe.svg',
+  bouffees: '/inhaler.png',
+  efervescent: '/effervescent.png',
 };
 
 const Tableau: React.FC<TableauProps> = ({ joursData }) => {
@@ -116,7 +116,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   .filter((medicament) => medicament.horaires.matin)
                   .map((medicament, index) => (
                     <div key={index}>
-                      <span>{medicament.nom} - </span>
+                      <span>{medicament.nom} </span>
                       {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                     </div>
                   ))}
@@ -126,7 +126,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   .filter((medicament) => medicament.horaires.midi)
                   .map((medicament, index) => (
                     <div key={index}>
-                      <span>{medicament.nom} - </span>
+                      <span>{medicament.nom}  </span>
                       {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                     </div>
                   ))}
@@ -136,7 +136,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   .filter((medicament) => medicament.horaires.apresmidi)
                   .map((medicament, index) => (
                     <div key={index}>
-                      <span>{medicament.nom} - </span>
+                      <span>{medicament.nom}  </span>
                       {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                     </div>
                   ))}
@@ -146,7 +146,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   .filter((medicament) => medicament.horaires.soir)
                   .map((medicament, index) => (
                     <div key={index}>
-                      <span>{medicament.nom} - </span>
+                      <span>{medicament.nom}  </span>
                       {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                     </div>
                   ))}
