@@ -5,12 +5,15 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
 import { MdAddToPhotos } from "react-icons/md";
 import { Medicament } from './medicament';
+import { useTranslation } from 'react-i18next';
 
 type FormulaireProps = {
   onAddMedicament: (medicament: Medicament) => void;
 };
 
 const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
+  const { t, i18n } = useTranslation();
+  console.log('i18n', i18n);
   const [nom, setNom] = useState('');
   const [quantite, setQuantite] = useState('');
   const [jours, setJours] = useState('');
@@ -84,11 +87,11 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     <>
       <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
         <Typography sx={{ fontFamily: 'Homemade Apple' }} variant="h5" gutterBottom>
-          Ajouter un Médicament
+          {t('Add a drug')}
         </Typography>
 
         <TextField
-          label="Nom du médicament"
+          label={t('Drug name')}
           value={nom}
           onChange={(e) => setNom(e.target.value)}
           required
@@ -107,7 +110,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           }}
         >
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
-            <span className="relative text-white m-1">Charger fichier </span>
+            <span className="relative text-white m-1">{t('Upload file')} </span>
             <span>
               <CloudUploadIcon className="relative text-white h-5 w-5" />
             </span>
@@ -138,7 +141,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </div>
         <div className="flex space-x-4 mb-4">
           <TextField
-            label="Quantité"
+            label={t('Quantity')}
             type="number"
             value={quantite}
             onChange={(e) => setQuantite(e.target.value)}
@@ -148,7 +151,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
 
           <TextField
-            label="Jours"
+            label={t('Days')}
             type="number"
             value={jours}
             onChange={(e) => setJours(e.target.value)} // Correction ici
@@ -159,10 +162,10 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </div>
         <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4">
           {[
-            { label: 'Matin', value: 'matin', heureDebut: 7, heureFin: 9 },
-            { label: 'Midi', value: 'midi', heureDebut: 12, heureFin: 1 },
-            { label: 'Après-midi', value: 'apresmidi', heureDebut: 4, heureFin: 5 },
-            { label: 'Soir', value: 'soir', heureDebut: 7, heureFin: 8 },
+            { label: t('Daytime.Morning'), value: 'matin', heureDebut: 7, heureFin: 9 },
+            { label: t('Daytime.Noon'), value: 'midi', heureDebut: 12, heureFin: 1 },
+            { label: t('Daytime.Afternoon'), value: 'apresmidi', heureDebut: 4, heureFin: 5 },
+            { label: t('Daytime.Evening'), value: 'soir', heureDebut: 7, heureFin: 8 },
           ].map(({ label, heureDebut, heureFin, value }) => (
             <div
               key={value}
@@ -183,7 +186,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
         <Button>
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
-              <span className="relative text-white m-1">ajouter </span>
+              <span className="relative text-white m-1">{t('Add')} </span>
               <span>
                 <MdAddToPhotos className="relative text-white h-5 w-5" />
               </span>

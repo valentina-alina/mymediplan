@@ -5,8 +5,11 @@ import ListeMedicaments from './ListeMedicaments';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
+import { useTranslation } from 'react-i18next';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  console.log('i18n', i18n);
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
 
@@ -33,7 +36,7 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={['Accueil', 'À propos', 'Contact']} />
+      <Navbar navItems={[t('Navbar.Home'), t('Navbar.About'), t('Navbar.Contact')]} />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
@@ -54,7 +57,7 @@ const App: React.FC = () => {
           {/* ListeMedicaments and Tableau Section */}
           <Paper variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
-              Liste des médicaments
+              {t('Drugs list')}
             </Typography>
             <ListeMedicaments medicaments={medicamentsList} />
             <Tableau joursData={joursData} />

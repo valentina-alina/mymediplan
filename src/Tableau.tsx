@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
 import Horloge from './Horloge';
 import { Medicament } from './medicament' ;
+import { useTranslation } from 'react-i18next';
 
 type TableauProps = {
   joursData: { [jour: number]: Medicament[] };
@@ -20,6 +20,8 @@ const typeImages: { [key: string]: string } = {
 };
 
 const Tableau: React.FC<TableauProps> = ({ joursData }) => {
+  const { t, i18n } = useTranslation();
+  console.log('i18n', i18n);
   const jours = Object.keys(joursData).map(Number);
   console.log(joursData)
   console.log(jours)
@@ -58,17 +60,17 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   return (
     <TableContainer component={Paper}>
       <Typography variant="h5" component="h2" sx={{ margin: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
-        Tableau des médicaments par jour
+        {t('Daily drugs table')}
       </Typography>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell><Typography variant="subtitle1" fontWeight="bold">Jour</Typography></TableCell>
-            <TableCell><Typography variant="subtitle1" fontWeight="bold">Date</Typography></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={'Matin'} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={'Midi'} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={'Après-midi'} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={'Soir'} afficherHeures={false} /></TableCell>
+            <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Day')}</Typography></TableCell>
+            <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Date')}</Typography></TableCell>
+            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /></TableCell>
+            <TableCell><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /></TableCell>
+            <TableCell><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /></TableCell>
+            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -76,7 +78,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
             <TableRow key={jour}>
               <TableCell>{jour}</TableCell>
               <TableCell>{getDateForDay(jour)}</TableCell>
-              {['matin', 'midi', 'apresmidi', 'soir'].map((periode) => (
+              {[t('Daytime.Morning'), t('Daytime.Noon'), t('Daytime.Afternoon'), t('Daytime.Evening')].map((periode) => (
                 <TableCell key={periode}>
                   {joursData[jour].map((medicament, index) => (
                     medicament.horaires[periode as keyof typeof medicament.horaires] && (

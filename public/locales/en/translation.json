@@ -1,0 +1,23 @@
+{
+    "Navbar": {
+        "Home": "Home",
+        "About": "About",
+        "Contact": "Contact"
+    },
+    "Daytime": {
+        "Morning": "Morning",
+        "Noon": "Noon",
+        "Afternoon": "Afternoon",
+        "Evening": "Evening"
+    },
+    "Add a drug": "Add a drug",
+    "Drug name": "Drug name",
+    "Upload file": "Upload file",
+    "Quantity": "Quantity",
+    "Days": "Days",
+    "Add": "Add",
+    "Drugs list": "Drugs list",
+    "Daily drugs table": "Daily drugs table",
+    "Day": "Day",
+    "Date": "Date"
+}
