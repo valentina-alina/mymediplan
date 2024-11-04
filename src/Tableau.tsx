@@ -57,7 +57,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
 
   return (
     <TableContainer component={Paper}>
-      <Typography variant="h5" component="h2" sx={{ marginBottom: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
+      <Typography variant="h5" component="h2" sx={{ margin: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
         Tableau des médicaments par jour
       </Typography>
       <Table>
