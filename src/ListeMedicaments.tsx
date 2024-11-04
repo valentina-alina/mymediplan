@@ -16,9 +16,9 @@ type ListeMedicamentsProps = {
 const ListeMedicaments: React.FC<ListeMedicamentsProps> = ({ medicaments }) => {
   return (
     <Box sx={{ margin: 4 }}>
-      <Typography variant="h5" component="h2" sx={{ marginBottom: 2, fontWeight: 'bold' }}>
+      {/* <Typography variant="h5" component="h2" sx={{ marginBottom: 2, fontWeight: 'bold' }}>
         Liste des Médicaments
-      </Typography>
+      </Typography> */}
       <List>
         {medicaments.map((medicament, index) => (
           <ListItem key={index} sx={{ borderBottom: '1px solid #ddd' }}>
