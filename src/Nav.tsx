@@ -32,7 +32,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6" sx={{ my: 2, fontFamily: 'Kalam' }}>
         MediPlan
       </Typography>
       <Divider />
@@ -40,7 +40,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item} primaryTypographyProps={{ sx: { fontFamily: 'Kalam' } }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -114,7 +114,6 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
           {drawer}
         </Drawer>
       </nav>
-      
     </Box>
   );
 };
