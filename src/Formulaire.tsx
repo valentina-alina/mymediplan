@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import Horloge from './Horloge';
-import { TextField, Button, Checkbox, FormControlLabel, Paper, Grid, Typography, InputLabel, Select, MenuItem } from '@mui/material';
+import { TextField, Button, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
-type Medicament = {
-  nom: string;
-  quantite: string;
-  typeQuantite: string;
-  horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
-  jours: string;
-  medicationImage: string | null;
-};
-
+import { MdAddToPhotos } from "react-icons/md";
+import { Medicament } from './medicament';
 
 type FormulaireProps = {
   onAddMedicament: (medicament: Medicament) => void;
@@ -47,7 +40,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       quantite,
       typeQuantite,
       horaires,
-      jours,
+      jours:+jours,
       medicationImage // Cela peut maintenant être soit une string, soit null
     };
 
@@ -108,12 +101,17 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         <Button
           component="label"
           role={undefined}
-          variant="contained"
           tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-          style={{ width: '250px' }}
+          sx={{
+            margin: '10px'
+          }}
         >
-          Upload files
+          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
+            <span className="relative text-white m-1">Charger fichier </span>
+            <span>
+              <CloudUploadIcon className="relative text-white h-5 w-5" />
+            </span>
+          </span>
           <VisuallyHiddenInput
             type="file"
             onChange={handleImageUpload}
@@ -184,8 +182,13 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
         </div>
 
-        <Button type="submit" variant="contained" color="primary" size="small" style={{ width: '150px' }}>
-          Ajouter
+        <Button>
+          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
+              <span className="relative text-white m-1">ajouter </span>
+              <span>
+                <MdAddToPhotos className="relative text-white h-5 w-5" />
+              </span>
+          </span>
         </Button>
 
       </form>

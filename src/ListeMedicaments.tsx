@@ -1,13 +1,6 @@
 import React from 'react';
-import { Typography, List, ListItem, ListItemText, Box } from '@mui/material';
-
-type Medicament = {
-  nom: string;
-  quantite: string;
-  typeQuantite: string;
-  horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
-  jours: string;
-};
+import { List, ListItem, ListItemText, Box } from '@mui/material';
+import { Medicament } from './medicament';
 
 type ListeMedicamentsProps = {
   medicaments: Medicament[];

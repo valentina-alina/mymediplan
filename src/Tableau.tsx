@@ -2,15 +2,7 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
 import Horloge from './Horloge';
-
-type Medicament = {
-  nom: string;
-  quantite: string;
-  typeQuantite: string;
-  horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
-  jours: number;
-  medicationImage: string | null;
-};
+import { Medicament } from './medicament' ;
 
 type TableauProps = {
   joursData: { [jour: number]: Medicament[] };

@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import useTheme from './context/useTheme.ts';
 
 interface Props {
   navItems: string[];
@@ -49,10 +50,15 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
+  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar
+        component="nav"
+        sx={{ backgroundColor: '#1D4ED8' }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -70,6 +76,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
           >
             MediPlan
           </Typography>
+          
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
@@ -77,6 +84,17 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
               </Button>
             ))}
           </Box>
+          <button
+            onClick={toggleDarkMode}
+            className="p-8 lg:p-6 bg-none dark:bg-none text-4xl"
+          >
+            {darkMode ? '☀️' : '🌑'}
+          </button>
+          <button
+            className="p-8 lg:p-6 bg-none dark:bg-none text-4xl"
+          >
+            ㊗
+          </button>
         </Toolbar>
       </AppBar>
       <nav>
@@ -96,6 +114,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
           {drawer}
         </Drawer>
       </nav>
+      
     </Box>
   );
 };

@@ -2,22 +2,12 @@ import React, { useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
-import { Box, dividerClasses, Paper } from '@mui/material';
-import useTheme from './context/useTheme.ts';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
-
-type Medicament = {
-  nom: string;
-  quantite: string;
-  typeQuantite: string;
-  horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
-  jours: string;
-  medicationImage: string | null;
-};
+import { Medicament } from './medicament.ts';
 
 const App: React.FC = () => {
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
-
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
 
   const ajouterMedicament = (medicament: Medicament) => {
@@ -34,44 +24,49 @@ const App: React.FC = () => {
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
   };
-  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
-    <div>
-      <Navbar  navItems={['Home', 'About', 'Contact']} />
-  
-        <div className='flex w-full p-t-10 bg-white text-black dark:bg-gray-900 dark:text-white' >
+    <Box
+      className="bg-white text-black dark:bg-gray-900 dark:text-white"
+      display="flex"
+      flexDirection="column"
+      minHeight="100vh"
+      sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
+    >
+      <Navbar navItems={['Accueil', 'À propos', 'Contact']} />
 
-          <div style={{ paddingTop: '64px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-          <button
-            onClick={toggleDarkMode}
-            className="p-8 lg:p-6 bg-none dark:bg-none -mt-9 text-4xl"
-          >
-            {darkMode ? '☀️' : '🌑'}
-          </button>
-          </div>
-          <div className='flex '>
+      {/* Main Content */}
+      <Box mt={12} display="flex" justifyContent="center" flex="1">
+        <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={3}
+          sx={{
+            width: '100%',
+            maxWidth: 1200,
+            paddingX: 2,
+          }}
+        >
+          {/* Formulaire Section */}
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1 }}>
+            <Formulaire onAddMedicament={ajouterMedicament} />
+          </Paper>
 
-        
-          <Paper variant="outlined" sx={{ flexBasis: '33.33%', padding: 2, textAlign: 'center' }}>
-            {/* Formulaire à gauche (1/3 de l'écran) */}
-      
-              <Formulaire onAddMedicament={ajouterMedicament} />
-        
-            </Paper> 
+          {/* ListeMedicaments and Tableau Section */}
+          <Paper variant="outlined" sx={{ padding: 2, flex: 2 }}>
+            <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: 2 }}>
+              Liste des médicaments
+            </Typography>
+            <ListeMedicaments medicaments={medicamentsList} />
+            <Tableau joursData={joursData} />
+          </Paper>
+        </Stack>
+      </Box>
 
-            <Paper variant="outlined" sx={{ flexBasis: '66.33%', padding: 2, textAlign: 'center' }}>
-            {/* Liste et Tableau à droite (2/3 de l'écran) */}
-              <h2 className="text-2xl font-bold mb-4 font-navbar">Liste des médicaments</h2>
-                <ListeMedicaments medicaments={medicamentsList} />
-                <Tableau joursData={joursData} />
-          
-            </Paper>  
-            </div>
-      
-        </div>
- 
-    </div>
-  
+      {/* Footer Section */}
+      <Box py={1} bgcolor="primary.main" color="white" textAlign="center" sx={{ mt: 'auto' }}>
+        <Typography variant="body2">© 2024 MediPlan</Typography>
+      </Box>
+    </Box>
   );
 };
 
