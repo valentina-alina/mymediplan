@@ -47,13 +47,13 @@ const App: React.FC = () => {
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 1 }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 2 }}>
-            <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: 2 }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
+            <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               Liste des médicaments
             </Typography>
             <ListeMedicaments medicaments={medicamentsList} />
@@ -63,8 +63,11 @@ const App: React.FC = () => {
       </Box>
 
       {/* Footer Section */}
-      <Box py={1} bgcolor="primary.main" color="white" textAlign="center" sx={{ mt: 'auto' }}>
-        <Typography variant="body2">© 2024 MediPlan</Typography>
+      <Box py={2.5} bgcolor="#1D4ED8" color="white" textAlign="center" sx={{ mt: 'auto' }}>
+        <Typography
+          variant="body2"
+          sx={{ fontSize: '1.5rem', fontFamily: 'Kalam' }}
+        >© 2024 MediPlan</Typography>
       </Box>
     </Box>
   );

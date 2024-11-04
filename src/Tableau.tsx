@@ -57,7 +57,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
 
   return (
     <TableContainer component={Paper}>
-         <Typography variant="h5" component="h2" sx={{ marginBottom: 2, fontWeight: 'bold' }}>
+      <Typography variant="h5" component="h2" sx={{ marginBottom: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
         Tableau des médicaments par jour
       </Typography>
       <Table>
@@ -81,15 +81,15 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   {joursData[jour].map((medicament, index) => (
                     medicament.horaires[periode as keyof typeof medicament.horaires] && (
                       <Box key={index} display="flex" alignItems="center" mb={1}>
-                       <div>
-                        {medicament.medicationImage && (
-                          <Box
-                            component="img"
-                            src={medicament.medicationImage}
-                            alt={medicament.nom}
-                            sx={{ width: 32, height: 32, marginRight: 1 }}
-                          />
-                        )}
+                        <div>
+                          {medicament.medicationImage && (
+                            <Box
+                              component="img"
+                              src={medicament.medicationImage}
+                              alt={medicament.nom}
+                              sx={{ width: 32, height: 32, marginRight: 1 }}
+                            />
+                          )}
                         </div>
                         <div>
                         <Typography variant="body2" sx={{ marginRight: 1 }}>

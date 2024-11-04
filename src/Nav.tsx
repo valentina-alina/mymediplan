@@ -72,14 +72,14 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontSize: '1.5rem', fontFamily: 'Kalam' }}
           >
             MediPlan
           </Typography>
           
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+              <Button key={item} sx={{ color: '#fff', fontSize: '1.25rem',fontFamily: 'Kalam' }}>
                 {item}
               </Button>
             ))}

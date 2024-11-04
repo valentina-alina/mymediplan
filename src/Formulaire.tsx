@@ -83,7 +83,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
-        <Typography variant="h5" gutterBottom>
+        <Typography sx={{ fontFamily: 'Homemade Apple' }} variant="h5" gutterBottom>
           Ajouter un Médicament
         </Typography>
 
