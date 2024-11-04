@@ -118,7 +118,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             multiple
           />
         </Button>
-        <div className="flex space-x-4 mb-4">
+        <div className="flex flex-wrap justify-center mr-8 md:mr-0 m-2 md:m-4 space-x-4">
           {[
             { src: '/spoon.svg', label: 'cuilleres' },
             { src: '/tablet.png', label: 'cachets' },
@@ -132,7 +132,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
               src={src}
               alt={label}
               onClick={() => selectTypeQuantite(label)}
-              className={`w-10 h-10 cursor-pointer p-2 ${typeQuantite === label ? 'shadow-lg border-2 border-blue-500' : ''}`}
+              className={`w-10 h-10 cursor-pointer p-1 m-6 md:m-0 ${typeQuantite === label ? 'shadow-lg border-2 border-blue-500' : ''}`}
             />
           ))}
         </div>
@@ -157,8 +157,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             margin="normal"
           />
         </div>
-        <div className="flex space-x-4 mb-4">
-
+        <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4">
           {[
             { label: 'Matin', value: 'matin', heureDebut: 7, heureFin: 9 },
             { label: 'Midi', value: 'midi', heureDebut: 12, heureFin: 1 },
@@ -168,7 +167,8 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             <div
               key={value}
               onClick={() => toggleHoraire(value as keyof typeof horaires)}
-              className={`cursor-pointer p-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
+              style={{ width: '110px', height: '110px' }}
+              className={`cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
                 } rounded`}
             >
               <Horloge
@@ -179,7 +179,6 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
               />
             </div>
           ))}
-
         </div>
 
         <Button>

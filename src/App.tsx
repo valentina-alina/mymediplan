@@ -36,7 +36,7 @@ const App: React.FC = () => {
       <Navbar navItems={['Accueil', 'À propos', 'Contact']} />
 
       {/* Main Content */}
-      <Box mt={18} display="flex" justifyContent="center" flex="1">
+      <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
         <Stack
           direction={{ xs: 'column', md: 'row' }}
           spacing={3}
