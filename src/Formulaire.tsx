@@ -88,7 +88,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   });
 
   return (
-    <Paper elevation={3} sx={{ padding: 3, maxWidth: 800, margin: 'auto', marginTop: 4 }}>
+    <>
       <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
         <Typography variant="h5" gutterBottom>
           Ajouter un Médicament
@@ -102,24 +102,24 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           fullWidth
           margin="normal"
         />
-        
-       
+
+
 
         <Button
-  component="label"
-  role={undefined}
-  variant="contained"
-  tabIndex={-1}
-  startIcon={<CloudUploadIcon />}
-  style={{ width: '250px'}}
->
-  Upload files
-  <VisuallyHiddenInput
-    type="file"
-    onChange={handleImageUpload}
-    multiple
-  />
-</Button>
+          component="label"
+          role={undefined}
+          variant="contained"
+          tabIndex={-1}
+          startIcon={<CloudUploadIcon />}
+          style={{ width: '250px' }}
+        >
+          Upload files
+          <VisuallyHiddenInput
+            type="file"
+            onChange={handleImageUpload}
+            multiple
+          />
+        </Button>
         <div className="flex space-x-4 mb-4">
           {[
             { src: '/spoon.svg', label: 'cuilleres' },
@@ -160,14 +160,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
         </div>
         <div className="flex space-x-4 mb-4">
-          {/* <TextField
-            label="Quantité"
-            type="number"
-            value={quantite}
-            onChange={(e) => setQuantite(e.target.value)}
-            required
-            fullWidth
-          /> */}
+
           {[
             { label: 'Matin', value: 'matin', heureDebut: 7, heureFin: 9 },
             { label: 'Midi', value: 'midi', heureDebut: 12, heureFin: 1 },
@@ -188,22 +181,15 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
               />
             </div>
           ))}
-       {/* <TextField
-            label="Jours"
-            type="number"
-            value={jours}
-            onChange={(e) => setQuantite(e.target.value)}
-            required
-            fullWidth
-          /> */}
+
         </div>
 
-        <Button type="submit" variant="contained" color="primary" size="small"   style={{ width: '150px'}}>
+        <Button type="submit" variant="contained" color="primary" size="small" style={{ width: '150px' }}>
           Ajouter
         </Button>
-        
+
       </form>
-    </Paper>
+    </>
   );
 };
 

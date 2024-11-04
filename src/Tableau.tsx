@@ -89,6 +89,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                   {joursData[jour].map((medicament, index) => (
                     medicament.horaires[periode as keyof typeof medicament.horaires] && (
                       <Box key={index} display="flex" alignItems="center" mb={1}>
+                       <div>
                         {medicament.medicationImage && (
                           <Box
                             component="img"
@@ -97,11 +98,21 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                             sx={{ width: 32, height: 32, marginRight: 1 }}
                           />
                         )}
+                        </div>
+                        <div>
                         <Typography variant="body2" sx={{ marginRight: 1 }}>
                           {medicament.nom}
                         </Typography>
+                        <Typography variant="body2" sx={{ marginRight: 1 }}>
+                        <span> {medicament.quantite} {medicament.typeQuantite}</span>
+                        </Typography>
+                        </div>
+                        <div>
+                      
                         {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
+                        </div>
                       </Box>
+                      
                     )
                   ))}
                 </TableCell>
