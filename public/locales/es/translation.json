@@ -1,0 +1,23 @@
+{
+    "Navbar": {
+        "Home": "Página principal",
+        "About": "Sobre nosotros",
+        "Contact": "Contacto"
+    },
+    "Daytime": {
+        "Morning": "Mañana",
+        "Noon": "Mediodía",
+        "Afternoon": "Tarde",
+        "Evening": "Noche"
+    },
+    "Add a drug": "Agregar un medicamento",
+    "Drug name": "Nombre del medicamento",
+    "Upload file": "Cargar archivo",
+    "Quantity": "Cantidad",
+    "Days": "Días",
+    "Add": "Agregar",
+    "Drugs list": "Lista de medicamentos",
+    "Daily drugs table": "Tabla de medicamentos / día",
+    "Day": "Día",
+    "Date": "Fecha"
+}

@@ -3,6 +3,8 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector"; 
 import en from '../public/locales/en/translation.json';
 import fr from '../public/locales/fr/translation.json';
+import ro from '../public/locales/ro/translation.json';
+import es from '../public/locales/es/translation.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -14,7 +16,9 @@ i18n
     .init({
         resources: {
             fr: { translation: fr },
-            en: { translation: en }
+            en: { translation: en },
+            ro: { translation: ro },
+            es: { translation: es },
         },
         fallbackLng: "en",
         lng: "fr", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
