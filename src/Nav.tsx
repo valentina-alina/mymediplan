@@ -111,7 +111,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
 
           {/* Language Dropdown Button */}
           <button onClick={handleLanguageMenuClick} className="p-8 lg:p-6 bg-none dark:bg-none text-4xl">
-            ㊗
+            🗺️
           </button>
 
           {/* Language Menu */}
