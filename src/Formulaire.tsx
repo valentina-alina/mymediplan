@@ -169,11 +169,10 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
               key={value}
               onClick={() => toggleHoraire(value as keyof typeof horaires)}
               // style={{ width: '110px', height: '110px' }}
-              className={`cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
+              className={` flex flex-col items-center justify-center cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? ' shadow-lg border-2 border-blue-500' : 'border border-gray-300'
                 } rounded`}
             >
-           <img src={`./${value}.svg`} alt="" />
-
+           <img src={`./${value}.svg`} alt=""  width="50" height="50" />
 
               <p>{label}</p>
               {/* <Horloge

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import html2canvas from 'html2canvas';
 import { StyleSheet } from '@react-pdf/renderer';
 import jsPDF from 'jspdf';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -55,13 +56,13 @@ const App: React.FC = () => {
               format: 'a4',
             });
     
-            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageWidth = pdf.internal.pageSize.getWidth()-50;
             const pageHeight = pdf.internal.pageSize.getHeight();
             const imgWidth = canvas.width;
             const imgHeight = canvas.height;
             const ratio = imgWidth / imgHeight;
     
-            let position = 0;
+            let position = 10;
             let remainingHeight = imgHeight;
     
             // Ajout d'images multiples pour le contenu qui dépasse une page
@@ -75,7 +76,7 @@ const App: React.FC = () => {
                 pageWidth / ratio // Calculer la hauteur en maintenant le ratio
               );
               remainingHeight -= pageHeight;
-              position -= pageHeight; // Décaler la position pour l'image suivante
+              position -= pageHeight-30; // Décaler la position pour l'image suivante
               if (remainingHeight > 0) {
                 pdf.addPage();
               }
@@ -103,23 +104,25 @@ const App: React.FC = () => {
           spacing={3}
           sx={{
             width: '100%',
-            maxWidth: 1200,
+          
             paddingX: 2,
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
+          <Paper variant="outlined" sx={{ flexBasis: '33.33%', padding: 2, flex: 1, height: 'fit-content' }}>
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
-          <Paper id="capture-section" variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
+          <Paper  variant="outlined" sx={{ flexBasis: '66.66%',padding: 2, flex: 2, height: 'fit-content' }}>
+            <div id="capture-section">         
+          <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>Générer le PDF</Button>
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               {t('Drugs list')}
-            </Typography>
-            <button onClick={handleCaptureAndDownload}>Capturer et générer le PDF</button>
+            </Typography>            
             <ListeMedicaments medicaments={medicamentsList} />
             <Tableau joursData={joursData} />
+            </div>
           </Paper>
         </Stack>
       </Box>

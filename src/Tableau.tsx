@@ -41,7 +41,30 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   };
 
   const renderImages = (type: string, quantity: number) => {
+    switch (type) {
+      case 'Spoon':
+        type='cuilleres'
+        break;
+      case 'Pill':
+        type='cachets'
+        break;
+        case 'Puff':
+          type=' bouffees'
+          break;
+        case 'Bag':
+          type='sachets'
+          break;
+          case 'Unit':
+            type='unites'
+            break;
+          case 'Effervescent':
+            type='efervescent'
+            break;
+    }
+
     const imageSrc = typeImages[type];
+    console.log("imagesrc",imageSrc)
+    console.log(typeImages,type)
     if (!imageSrc) return null;
 
     return Array.from({ length: quantity }, (_, i) => (
@@ -52,6 +75,8 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
         alt={type}
         sx={{ width: 24, height: 24, marginX: 0.5 }}
       />
+  
+     
     ));
   };
 
@@ -82,8 +107,10 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
               </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /> */}
+              <div className='flex flex-col items-center justify-center '>
               <img src="./soir.svg" alt="" width="50" height="50" />
               <p>{t('Daytime.Evening')}</p>
+                            </div>
               </TableCell>
           </TableRow>
         </TableHead>
@@ -121,8 +148,8 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                         </Typography>
                         </div>
                         <div>
-                      
-                        {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
+                   
+                          {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                         </div>
                       </Box>
                       
