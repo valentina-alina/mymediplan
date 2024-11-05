@@ -107,7 +107,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             margin: '10px'
           }}
         >
-          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
+          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-customBlue relative flex gap-2 p-1 mt-2'>
             <span className="relative text-white m-1">{t('Upload file')} </span>
             <span>
               <CloudUploadIcon className="relative text-white h-5 w-5" />
@@ -183,7 +183,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </div>
 
         <Button type="submit">
-          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
+          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-customBlue relative flex gap-2 p-1 mt-2'>
               <span className="relative text-white m-1">{t('Add')} </span>
               <span>
                 <MdAddToPhotos className="relative text-white h-5 w-5" />

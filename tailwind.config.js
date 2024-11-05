@@ -16,7 +16,11 @@ module.exports = {
       'sans': ['ui-sans-serif', 'system-ui'],
       'serif': ['ui-serif', 'Georgia'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        customBlue: '#061439'
+      }
+    },
   },
   plugins: [],
 };

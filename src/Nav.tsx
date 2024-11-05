@@ -77,7 +77,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: "#1D4ED8" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#061439" }}>
         <Toolbar>
           <IconButton
             color="inherit"
