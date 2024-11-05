@@ -65,10 +65,26 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
           <TableRow>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Day')}</Typography></TableCell>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Date')}</Typography></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /></TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /> */}
+              <img src="./matin.svg" alt="" width="50" height="50" />
+              <p>{t('Daytime.Morning')}</p>
+            </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /> */}
+              <img src="./midi.svg" alt="" width="50" height="50" />
+              <p>{t('Daytime.Noon')}</p>
+            </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /> */}
+              <img src="./apresmidi.svg" alt="" width="50" height="50" />
+              <p>{t('Daytime.Afternoon')}</p>
+              </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /> */}
+              <img src="./soir.svg" alt="" width="50" height="50" />
+              <p>{t('Daytime.Evening')}</p>
+              </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

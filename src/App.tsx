@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
@@ -6,6 +6,10 @@ import { Box, Paper, Stack, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
+
+import html2canvas from 'html2canvas';
+import { StyleSheet } from '@react-pdf/renderer';
+import jsPDF from 'jspdf';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -26,7 +30,61 @@ const App: React.FC = () => {
 
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
-  };
+  }
+    const styles = StyleSheet.create({
+      page: {
+        padding: 20,
+      },
+      image: {
+        width: '100%',
+        height: 'auto',
+      },
+    });
+      const divRef = useRef<HTMLDivElement>(null);
+      const [imageSrc, setImageSrc] = useState<string | null>(null);
+    
+   
+      const handleCaptureAndDownload = () => {
+        const elementToCapture = document.getElementById('capture-section');
+        if (elementToCapture) {
+          html2canvas(elementToCapture, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+              orientation: 'portrait', // ou 'landscape' pour le mode paysage
+              unit: 'pt',
+              format: 'a4',
+            });
+    
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = imgWidth / imgHeight;
+    
+            let position = 0;
+            let remainingHeight = imgHeight;
+    
+            // Ajout d'images multiples pour le contenu qui dépasse une page
+            while (remainingHeight > 0) {
+              pdf.addImage(
+                imgData,
+                'PNG',
+                0,
+                position,
+                pageWidth,
+                pageWidth / ratio // Calculer la hauteur en maintenant le ratio
+              );
+              remainingHeight -= pageHeight;
+              position -= pageHeight; // Décaler la position pour l'image suivante
+              if (remainingHeight > 0) {
+                pdf.addPage();
+              }
+            }
+    
+            pdf.save('capture.pdf');
+          });
+        }
+      };
 
   return (
     <Box
@@ -55,10 +113,11 @@ const App: React.FC = () => {
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
+          <Paper id="capture-section" variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               {t('Drugs list')}
             </Typography>
+            <button onClick={handleCaptureAndDownload}>Capturer et générer le PDF</button>
             <ListeMedicaments medicaments={medicamentsList} />
             <Tableau joursData={joursData} />
           </Paper>
@@ -75,5 +134,6 @@ const App: React.FC = () => {
     </Box>
   );
 };
+
 
 export default App;

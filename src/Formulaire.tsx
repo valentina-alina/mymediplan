@@ -168,26 +168,26 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             <div
               key={value}
               onClick={() => toggleHoraire(value as keyof typeof horaires)}
-              style={{ width: '110px', height: '110px' }}
+              // style={{ width: '110px', height: '110px' }}
               className={`cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? 'shadow-lg border-2 border-blue-500' : 'border border-gray-300'
                 } rounded`}
             >
-              <Horloge
+           <img src={`./${value}.svg`} alt="" />
+
+
+              <p>{label}</p>
+              {/* <Horloge
                 heureDebutInitiale={heureDebut}
                 heureFinInitiale={heureFin}
                 texteFinal={label}
                 afficherHeures={false}
-              />
+              /> */}
             </div>
           ))}
         </div>
 
         <Button type="submit">
-<<<<<<< HEAD
-          <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
-=======
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-customBlue relative flex gap-2 p-1 mt-2'>
->>>>>>> 9f848527cf7cb00c74822762291f2b097db94520
               <span className="relative text-white m-1">{t('Add')} </span>
               <span>
                 <MdAddToPhotos className="relative text-white h-5 w-5" />

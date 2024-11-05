@@ -1,0 +1,25 @@
+ <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- {/* Fond de la montre */} -->
+  <circle cx="100" cy="100" r="90" stroke="black" stroke-width="5" fill="white" />
+  
+  <!-- {/* Cadran (heures) */} -->
+  <text x="100" y="25" font-size="15" text-anchor="middle">12</text>
+  <text x="175" y="105" font-size="15" text-anchor="middle">3</text>
+  <text x="100" y="185" font-size="15" text-anchor="middle">6</text>
+  <text x="25" y="105" font-size="15" text-anchor="middle">9</text>
+  
+  <!-- {/* Marques des heures */} -->
+  <!-- {/* <line x1="100" y1="10" x2="100" y2="20" stroke="black" stroke-width="2" />
+  <line x1="190" y1="100" x2="180" y2="100" stroke="black" stroke-width="2" />
+  <line x1="100" y1="190" x2="100" y2="180" stroke="black" stroke-width="2" />
+  <line x1="10" y1="100" x2="20" y2="100" stroke="black" stroke-width="2" /> */} -->
+  
+  <!-- {/* Zone de la plage horaire (8h à 9h) */} -->
+  <!-- {/* <path d="M30,100 A70,70 0 0,1 38.27,68.27 L100,100 Z" fill="rgba(0, 0, 255, 0.3)" /> */} -->
+  
+  {/* <!-- Aiguille des heures (8h) --> */}
+  <line x1="100" y1="100" x2="130" y2="125" stroke="black" stroke-width="6" />
+  
+  <!-- {/* Aiguille des minutes (00 min) */} -->
+  <line x1="100" y1="100" x2="100" y2="30" stroke="black" stroke-width="6" />
+</svg>
