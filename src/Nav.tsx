@@ -64,7 +64,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
         {navItems.map((item, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={t(item)} primaryTypographyProps={{ sx: { fontFamily: "Kalam" } }} />
+              <ListItemText primary={t(item)} primaryTypographyProps={{ sx: { fontFamily: "Kalam", fontSize: "2.25rem" } }} />
             </ListItemButton>
           </ListItem>
         ))}
