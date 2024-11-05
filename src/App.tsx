@@ -66,7 +66,7 @@ const App: React.FC = () => {
       </Box>
 
       {/* Footer Section */}
-      <Box py={2.5} bgcolor="#1D4ED8" color="white" textAlign="center" sx={{ mt: 'auto' }}>
+      <Box py={2.5} bgcolor="#061439" color="white" textAlign="center" sx={{ mt: 'auto' }}>
         <Typography
           variant="body2"
           sx={{ fontSize: '1.5rem', fontFamily: 'Kalam' }}

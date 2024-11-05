@@ -9,7 +9,6 @@ type TableauProps = {
   
 };
 
-
 const typeImages: { [key: string]: string } = {
   cuilleres: '/spoon.svg',
   cachets: '/tablet.png',
@@ -35,11 +34,10 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
       month: '2-digit',
       day: '2-digit'
     };
-    const formattedDate = date.toLocaleDateString('fr-FR', options);
-    const parts = formattedDate.split(', ');
-    const nomDuJour = parts[0];
-    const dateSansNom = parts.length > 1 ? parts[1] : '';
-    return `${nomDuJour} ${dateSansNom}`.trim();
+    
+    const formattedDate = date.toLocaleDateString(i18n.language, options);
+
+    return formattedDate;
   };
 
   const renderImages = (type: string, quantity: number) => {
@@ -98,7 +96,12 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                           {medicament.nom}
                         </Typography>
                         <Typography variant="body2" sx={{ marginRight: 1 }}>
-                        <span> {medicament.quantite} {medicament.typeQuantite}</span>
+                          <span>
+                            {medicament.quantite}{" "}
+                            {parseInt(medicament.quantite) === 1
+                              ? t(`Units.${medicament.typeQuantite}_singular`)
+                              : t(`Units.${medicament.typeQuantite}_plural`)}
+                          </span>
                         </Typography>
                         </div>
                         <div>
@@ -120,4 +123,3 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
 };
 
 export default Tableau;
-

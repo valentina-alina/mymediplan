@@ -2,7 +2,7 @@
     "Navbar": {
         "Home": "主页",
         "About": "关于",
-        "Contact": "联系"
+        "Contact": "联系我们"
     },
     "Daytime": {
         "Morning": "早上",
@@ -10,14 +10,37 @@
         "Afternoon": "下午",
         "Evening": "晚上"
     },
-    "Add a drug": "加药",
-    "Drug name": "药名",
+    "For": "持续",
+    "Units": {
+        "Spoon_singular": "勺",
+        "Spoon_plural": "勺",
+        "Pill_singular": "药片",
+        "Pill_plural": "药片",
+        "Bag_singular": "袋",
+        "Bag_plural": "袋",
+        "Unit_singular": "单位",
+        "Unit_plural": "单位",
+        "Puff_singular": "喷雾",
+        "Puff_plural": "喷雾",
+        "Effervescent": "泡腾片"
+    },
+    "Add a drug": "添加药物",
+    "Drug name": "药物名称",
     "Upload file": "上传文件",
     "Quantity": "数量",
     "Days": "天数",
     "Add": "增加",
     "Drugs list": "药物清单",
-    "Daily drugs table": "每日药品表",
+    "Daily drugs table": "每日用药表",
     "Day": "天",
-    "Date": "日期"
+    "Date": "日期",
+    "Days of Week": {
+        "Monday": "周一",
+        "Tuesday": "周二",
+        "Wednesday": "周三",
+        "Thursday": "周四",
+        "Friday": "周五",
+        "Saturday": "周六",
+        "Sunday": "周日"
+    }
 }
