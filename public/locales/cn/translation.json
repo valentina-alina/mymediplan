@@ -2,7 +2,7 @@
     "Navbar": {
         "Home": "主页",
         "About": "关于",
-        "Contact": "联系"
+        "Contact": "联系我们"
     },
     "Daytime": {
         "Morning": "早上",
@@ -10,14 +10,14 @@
         "Afternoon": "下午",
         "Evening": "晚上"
     },
-    "Add a drug": "加药",
-    "Drug name": "药名",
+    "Add a drug": "添加药物",
+    "Drug name": "药物名称",
     "Upload file": "上传文件",
     "Quantity": "数量",
     "Days": "天数",
     "Add": "增加",
     "Drugs list": "药物清单",
-    "Daily drugs table": "每日药品表",
+    "Daily drugs table": "每日用药表",
     "Day": "天",
     "Date": "日期"
 }
