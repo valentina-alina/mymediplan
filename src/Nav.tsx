@@ -126,6 +126,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
             <MenuItem onClick={() => changeLanguage("fr")}>Français</MenuItem>
             <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
             <MenuItem onClick={() => changeLanguage("ro")}>Română</MenuItem>
+            <MenuItem onClick={() => changeLanguage("pt")}>Português</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

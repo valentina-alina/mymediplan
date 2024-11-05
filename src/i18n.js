@@ -5,6 +5,7 @@ import en from '../public/locales/en/translation.json';
 import fr from '../public/locales/fr/translation.json';
 import ro from '../public/locales/ro/translation.json';
 import es from '../public/locales/es/translation.json';
+import pt from '../public/locales/pt/translation.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -19,6 +20,7 @@ i18n
             en: { translation: en },
             ro: { translation: ro },
             es: { translation: es },
+            pt: { translation: pt },
         },
         fallbackLng: "en",
         lng: "fr", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
