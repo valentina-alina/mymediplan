@@ -56,8 +56,6 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     setMedicationImage(null); // Réinitialisation correcte
   };
 
-
-
   const handleImageUpload = (event: { target: { files: FileList | null; }; }) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -85,7 +83,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg border-2 border-r-customBlue">
         <Typography sx={{ fontFamily: 'Homemade Apple' }} variant="h5" gutterBottom>
           {t('Add a drug')}
         </Typography>
