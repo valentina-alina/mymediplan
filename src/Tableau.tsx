@@ -28,16 +28,23 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   const getDateForDay = (day: number) => {
     const date = new Date();
     date.setDate(date.getDate() + day - 1);
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    };
     
-    const formattedDate = date.toLocaleDateString(i18n.language, options);
+    // Get weekday name from the date
+    const weekdayIndex = date.getDay(); // getDay() returns 0 (Sunday) to 6 (Saturday)
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const weekday = weekdays[weekdayIndex];
 
-    return formattedDate;
+    // Use translation for weekday
+    const translatedWeekday = t(`Days of Week.${weekday}`);
+
+    // Format the rest of the date
+    const formattedDate = date.toLocaleDateString(i18n.language, {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    });
+
+  return `${translatedWeekday}, ${formattedDate}`;
   };
 
   const renderImages = (type: string, quantity: number) => {

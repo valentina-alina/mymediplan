@@ -36,7 +36,7 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={[t('Navbar.Home'), t('Navbar.About'), t('Navbar.Contact')]} />
+      <Navbar navItems={['🏠', '👥', '📝']} />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">

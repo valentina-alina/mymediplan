@@ -98,19 +98,19 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
-              <Button key={index} sx={{ color: "#fff", fontSize: "1.25rem", fontFamily: "Kalam" }}>
+              <Button key={index} sx={{ color: "#fff", fontSize: "2.35rem", fontFamily: "Kalam", margin: '8px 0 0 0' }}>
                 {t(item)}
               </Button>
             ))}
           </Box>
 
           {/* Dark Mode Toggle Button */}
-          <button onClick={toggleDarkMode} className="p-8 lg:p-6 bg-none dark:bg-none text-4xl">
+          <button onClick={toggleDarkMode} className="-ml-6 p-8 lg:p-6 bg-none dark:bg-none text-4xl">
             {darkMode ? "☀️" : "🌑"}
           </button>
 
           {/* Language Dropdown Button */}
-          <button onClick={handleLanguageMenuClick} className="p-8 lg:p-6 bg-none dark:bg-none text-4xl">
+          <button onClick={handleLanguageMenuClick} className="-ml-8 p-8 lg:p-6 bg-none dark:bg-none text-4xl">
             🗺️
           </button>
 
@@ -128,6 +128,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
             <MenuItem onClick={() => changeLanguage("ro")}>Română</MenuItem>
             <MenuItem onClick={() => changeLanguage("pt")}>Português</MenuItem>
             <MenuItem onClick={() => changeLanguage("it")}>Italiano</MenuItem>
+            <MenuItem onClick={() => changeLanguage("se")}>Svenska</MenuItem>
             <MenuItem onClick={() => changeLanguage("cn")}>中文</MenuItem>
           </Menu>
         </Toolbar>
