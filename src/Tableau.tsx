@@ -44,7 +44,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
       day: "2-digit"
     });
 
-  return `${translatedWeekday}, ${formattedDate}`;
+    return `${translatedWeekday}, ${formattedDate}`;
   };
 
   const renderImages = (type: string, quantity: number) => {

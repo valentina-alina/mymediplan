@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
@@ -27,6 +27,14 @@ const App: React.FC = () => {
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
   };
+
+  useEffect(() => {
+    // Load medicaments from localStorage
+    const storedMedicaments = localStorage.getItem('medicaments');
+    if (storedMedicaments) {
+      setMedicamentsList(JSON.parse(storedMedicaments));
+    }
+  }, []);
 
   return (
     <Box
@@ -60,7 +68,7 @@ const App: React.FC = () => {
               {t('Drugs list')}
             </Typography>
             <ListeMedicaments medicaments={medicamentsList} />
-            <Tableau joursData={joursData} />
+            <Tableau joursData={{ 1: medicamentsList, 2: [], 3: [] }} />
           </Paper>
         </Stack>
       </Box>

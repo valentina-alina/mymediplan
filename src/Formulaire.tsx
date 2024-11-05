@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Horloge from './Horloge';
 import { TextField, Button, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -25,6 +25,17 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     soir: false,
   });
 
+  const [submittedMedicaments, setSubmittedMedicaments] = useState<Medicament[]>([]);
+  console.log('submittedMedicaments', submittedMedicaments);
+
+  useEffect(() => {
+    // Load medicaments from localStorage
+    const storedMedicaments = localStorage.getItem('medicaments');
+    if (storedMedicaments) {
+      setSubmittedMedicaments(JSON.parse(storedMedicaments));
+    }
+  }, []);
+
 
   const selectTypeQuantite = (type: string) => {
     setTypeQuantite(type);
@@ -38,7 +49,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const medicament: Medicament = {
+    const newMedicament: Medicament = {
       nom,
       quantite,
       typeQuantite,
@@ -47,7 +58,12 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       medicationImage // Cela peut maintenant être soit une string, soit null
     };
 
-    onAddMedicament(medicament);
+    onAddMedicament(newMedicament);
+
+    const updatedMedicaments = [...submittedMedicaments, newMedicament];
+    setSubmittedMedicaments(updatedMedicaments);
+    localStorage.setItem('medicaments', JSON.stringify(updatedMedicaments)); // Save to localStorage
+
     setNom('');
     setQuantite('');
     setJours('');
