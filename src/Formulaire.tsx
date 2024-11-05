@@ -184,7 +184,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           ))}
         </div>
 
-        <Button>
+        <Button type="submit">
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
               <span className="relative text-white m-1">{t('Add')} </span>
               <span>

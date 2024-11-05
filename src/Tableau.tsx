@@ -78,7 +78,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
             <TableRow key={jour}>
               <TableCell>{jour}</TableCell>
               <TableCell>{getDateForDay(jour)}</TableCell>
-              {[t('Daytime.Morning'), t('Daytime.Noon'), t('Daytime.Afternoon'), t('Daytime.Evening')].map((periode) => (
+              {['matin', 'midi', 'apresmidi', 'soir'].map((periode) => (
                 <TableCell key={periode}>
                   {joursData[jour].map((medicament, index) => (
                     medicament.horaires[periode as keyof typeof medicament.horaires] && (
