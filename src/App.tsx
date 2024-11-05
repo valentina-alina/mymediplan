@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
@@ -13,6 +13,19 @@ const App: React.FC = () => {
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
 
+  // Load data from local storage on component mount
+  useEffect(() => {
+    const storedJoursData = localStorage.getItem('joursData');
+    const storedMedicamentsList = localStorage.getItem('medicamentsList');
+
+    if (storedJoursData) {
+      setJoursData(JSON.parse(storedJoursData));
+    }
+    if (storedMedicamentsList) {
+      setMedicamentsList(JSON.parse(storedMedicamentsList));
+    }
+  }, []);
+
   const ajouterMedicament = (medicament: Medicament) => {
     const updatedJoursData = { ...joursData };
 
@@ -26,8 +39,24 @@ const App: React.FC = () => {
 
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
+
+    // Save to local storage
+    localStorage.setItem('joursData', JSON.stringify(updatedJoursData));
+    localStorage.setItem('medicamentsList', JSON.stringify([...medicamentsList, medicament]));
   };
 
+  // Function to clear local storage
+  const clearLocalStorage = () => {
+    localStorage.removeItem('joursData');
+    localStorage.removeItem('medicamentsList');
+  };
+
+  // This function could be called when cookies are deleted
+  const handleCookiesCleared = () => {
+    clearLocalStorage();
+    // Other cookie-clearing logic can be added here
+  };
+  console.log('handleCookiesCleared', handleCookiesCleared);
 
   return (
     <Box
