@@ -5,10 +5,24 @@
         "Contact": "Contacto"
     },
     "Daytime": {
-        "Morning": "Mañana",
-        "Noon": "Mediodía",
-        "Afternoon": "Tarde",
-        "Evening": "Noche"
+        "Morning": "mañana",
+        "Noon": "mediodía",
+        "Afternoon": "tarde",
+        "Evening": "noche"
+    },
+    "For": "durante",
+    "Units": {
+        "Spoon_singular": "cucharada",
+        "Spoon_plural": "cucharadas",
+        "Pill_singular": "píldora",
+        "Pill_plural": "píldoras",
+        "Bag_singular": "sobre",
+        "Bag_plural": "sobres",
+        "Unit_singular": "unidad",
+        "Unit_plural": "unidades",
+        "Puff_singular": "bocanada",
+        "Puff_plural": "bocanadas",
+        "Effervescent": "efervescente"
     },
     "Add a drug": "Agregar un medicamento",
     "Drug name": "Nombre del medicamento",
@@ -19,5 +33,14 @@
     "Drugs list": "Lista de medicamentos",
     "Daily drugs table": "Tabla de medicamentos / día",
     "Day": "Día",
-    "Date": "Fecha"
+    "Date": "Fecha",
+    "Days of Week": {
+        "Monday": "lunes",
+        "Tuesday": "martes",
+        "Wednesday": "miércoles",
+        "Thursday": "jueves",
+        "Friday": "viernes",
+        "Saturday": "sábado",
+        "Sunday": "domingo"
+    }
 }

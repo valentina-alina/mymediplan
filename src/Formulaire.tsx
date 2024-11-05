@@ -99,8 +99,6 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           margin="normal"
         />
 
-
-
         <Button
           component="label"
           role={undefined}
@@ -123,19 +121,19 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
         </Button>
         <div className="flex flex-wrap justify-center mr-8 md:mr-0 m-2 md:m-4 space-x-4">
           {[
-            { src: '/spoon.svg', label: 'cuilleres' },
-            { src: '/tablet.png', label: 'cachets' },
-            { src: '/bag.png', label: 'sachets' },
-            { src: '/syringe.svg', label: 'unites' },
-            { src: '/inhaler.png', label: 'bouffees' },
-            { src: '/effervescent.png', label: 'efervescent' },
-          ].map(({ src, label }) => (
+            { src: '/spoon.svg', key: 'Spoon', label: t('Units.Spoons') },
+            { src: '/tablet.png', key: 'Pill', label: t('Units.Pills') },
+            { src: '/bag.png', key: 'Bag', label: t('Units.Bags') },
+            { src: '/syringe.svg', key: 'Unit', label: t('Units.Units') },
+            { src: '/inhaler.png', key: 'Puff', label: t('Units.Puffs') },
+            { src: '/effervescent.png', key: 'Effervescent', label: t('Units.Effervescent') },
+          ].map(({ src, key, label }) => (
             <img
-              key={label}
+              key={key}
               src={src}
               alt={label}
-              onClick={() => selectTypeQuantite(label)}
-              className={`w-10 h-10 cursor-pointer p-1 m-6 md:m-0 ${typeQuantite === label ? 'shadow-lg border-2 border-blue-500' : ''}`}
+              onClick={() => selectTypeQuantite(key)}
+              className={`w-10 h-10 cursor-pointer p-1 m-6 md:m-0 ${typeQuantite === key ? 'shadow-lg border-2 border-blue-500' : ''}`}
             />
           ))}
         </div>
@@ -184,7 +182,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           ))}
         </div>
 
-        <Button>
+        <Button type="submit">
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2'>
               <span className="relative text-white m-1">{t('Add')} </span>
               <span>

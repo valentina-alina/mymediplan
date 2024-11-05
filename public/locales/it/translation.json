@@ -5,10 +5,24 @@
         "Contact": "Contatto"
     },
     "Daytime": {
-        "Morning": "Mattino",
-        "Noon": "Mezzogiorno",
-        "Afternoon": "Pomeriggio",
-        "Evening": "Sera"
+        "Morning": "mattino",
+        "Noon": "mezzogiorno",
+        "Afternoon": "pomeriggio",
+        "Evening": "sera"
+    },
+    "For": "per",
+    "Units": {
+        "Spoon_singular": "cucchiaino",
+        "Spoon_plural": "cucchiaini",
+        "Pill_singular": "pillola",
+        "Pill_plural": "pillole",
+        "Bag_singular": "bustina",
+        "Bag_plural": "bustine",
+        "Unit_singular": "unità",
+        "Unit_plural": "unità",
+        "Puff_singular": "zaffata",
+        "Puff_plural": "zaffate",
+        "Effervescent": "effervescente"
     },
     "Add a drug": "Aggiungere un farmaco",
     "Drug name": "Nome del farmaco",
@@ -19,5 +33,14 @@
     "Drugs list": "Elenco dei farmaci",
     "Daily drugs table": "Tabella dei farmaci / giorno",
     "Day": "Giorno",
-    "Date": "Data"
+    "Date": "Data",
+    "Days of Week": {
+        "Monday": "lunedì",
+        "Tuesday": "martedì",
+        "Wednesday": "mercoledì",
+        "Thursday": "giovedì",
+        "Friday": "venerdì",
+        "Saturday": "sabato",
+        "Sunday": "domenica"
+    }
 }
