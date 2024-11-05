@@ -156,7 +156,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             margin="normal"
           />
         </div>
-        <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4">
+        <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4 font-h1">
           {[
             { label: t('Daytime.Morning'), value: 'matin', heureDebut: 7, heureFin: 9 },
             { label: t('Daytime.Noon'), value: 'midi', heureDebut: 12, heureFin: 1 },

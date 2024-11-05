@@ -55,7 +55,7 @@ const App: React.FC = () => {
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
-          <Paper variant="outlined" className="shadow-lg" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               {t('Drugs list')}
             </Typography>

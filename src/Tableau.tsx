@@ -41,6 +41,27 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   };
 
   const renderImages = (type: string, quantity: number) => {
+    switch (type) {
+      case 'Spoon':
+        type='cuilleres'
+        break;
+      case 'Pill':
+        type='cachets'
+        break;
+        case 'Puff':
+          type=' bouffees'
+          break;
+        case 'Bag':
+          type='sachets'
+          break;
+          case 'Unit':
+            type='unites'
+            break;
+          case 'Effervescent':
+            type='efervescent'
+            break;
+    }
+
     const imageSrc = typeImages[type];
     if (!imageSrc) return null;
 
@@ -65,10 +86,10 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
           <TableRow>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Day')}</Typography></TableCell>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Date')}</Typography></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /></TableCell>
-            <TableCell><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /></TableCell>
+            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /></TableCell>
+            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /></TableCell>
+            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /></TableCell>
+            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
