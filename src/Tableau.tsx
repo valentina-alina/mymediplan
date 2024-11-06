@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
-import Horloge from './Horloge';
 import { Medicament } from './medicament' ;
 import { useTranslation } from 'react-i18next';
 

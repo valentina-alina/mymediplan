@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Horloge from './Horloge';
 import { TextField, Button, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
@@ -178,7 +177,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             { label: t('Daytime.Noon'), value: 'midi', heureDebut: 12, heureFin: 1 },
             { label: t('Daytime.Afternoon'), value: 'apresmidi', heureDebut: 4, heureFin: 5 },
             { label: t('Daytime.Evening'), value: 'soir', heureDebut: 7, heureFin: 8 },
-          ].map(({ label, heureDebut, heureFin, value }) => (
+          ].map(({ label, value }) => (
             <div
               key={value}
               onClick={() => toggleHoraire(value as keyof typeof horaires)}
