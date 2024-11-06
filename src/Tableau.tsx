@@ -28,23 +28,16 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   const getDateForDay = (day: number) => {
     const date = new Date();
     date.setDate(date.getDate() + day - 1);
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    };
     
-    // Get weekday name from the date
-    const weekdayIndex = date.getDay(); // getDay() returns 0 (Sunday) to 6 (Saturday)
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const weekday = weekdays[weekdayIndex];
+    const formattedDate = date.toLocaleDateString(i18n.language, options);
 
-    // Use translation for weekday
-    const translatedWeekday = t(`Days of Week.${weekday}`);
-
-    // Format the rest of the date
-    const formattedDate = date.toLocaleDateString(i18n.language, {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit"
-    });
-
-    return `${translatedWeekday}, ${formattedDate}`;
+    return formattedDate;
   };
 
   const renderImages = (type: string, quantity: number) => {
@@ -88,7 +81,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   };
 
   return (
-    <TableContainer component={Paper} className="border-2 border-r-customBlue">
+    <TableContainer component={Paper}>
       <Typography variant="h5" component="h2" sx={{ margin: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
         {t('Daily drugs table')}
       </Typography>

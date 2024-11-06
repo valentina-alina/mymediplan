@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
@@ -8,7 +8,7 @@ import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
 
 import html2canvas from 'html2canvas';
-import { StyleSheet } from '@react-pdf/renderer';
+// import { StyleSheet } from '@react-pdf/renderer';
 import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
 
@@ -44,7 +44,68 @@ const App: React.FC = () => {
 
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
+
+    // Save to local storage
+    localStorage.setItem('joursData', JSON.stringify(updatedJoursData));
+    localStorage.setItem('medicamentsList', JSON.stringify([...medicamentsList, medicament]));
   };
+
+  // Function to clear local storage
+  const clearLocalStorage = () => {
+    localStorage.removeItem('joursData');
+    localStorage.removeItem('medicamentsList');
+  };
+
+  // This function could be called when cookies are deleted
+  const handleCookiesCleared = () => {
+    clearLocalStorage();
+    // Other cookie-clearing logic can be added here
+  };
+  console.log('handleCookiesCleared', handleCookiesCleared);
+
+
+  const handleCaptureAndDownload = () => {
+    const elementToCapture = document.getElementById('capture-section');
+    if (elementToCapture) {
+      html2canvas(elementToCapture, { scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait', // ou 'landscape' pour le mode paysage
+          unit: 'pt',
+          format: 'a4',
+        });
+
+        const pageWidth = pdf.internal.pageSize.getWidth()-60;
+        const pageHeight = pdf.internal.pageSize.getHeight()-30;
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = imgWidth / imgHeight;
+
+        let position = 50;
+        let remainingHeight = imgHeight+50;
+
+        // Ajout d'images multiples pour le contenu qui dépasse une page
+        while (remainingHeight > 0) {
+          pdf.addImage(
+            imgData,
+            'PNG',
+            30,
+            position,
+            pageWidth,
+            pageWidth / ratio // Calculer la hauteur en maintenant le ratio
+          );
+          remainingHeight -= pageHeight;
+          position -= pageHeight-30; // Décaler la position pour l'image suivante
+          if (remainingHeight > 0) {
+            pdf.addPage();
+          }
+        }
+
+        pdf.save('capture.pdf');
+      });
+    }
+  };
+  
 
   return (
     <Box
@@ -74,8 +135,9 @@ const App: React.FC = () => {
 
           {/* ListeMedicaments and Tableau Section */}
           <Paper  variant="outlined" sx={{ flexBasis: '66.66%',padding: 2, flex: 2, height: 'fit-content' }}>
-            <div id="capture-section">         
           <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>Générer le PDF</Button>
+            <div id="capture-section">         
+       
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               {t('Drugs list')}
             </Typography>            
