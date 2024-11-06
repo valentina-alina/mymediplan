@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Horloge from './Horloge';
 import { TextField, Button, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -25,6 +25,17 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     soir: false,
   });
 
+  const [submittedMedicaments, setSubmittedMedicaments] = useState<Medicament[]>([]);
+  console.log('submittedMedicaments', submittedMedicaments);
+
+  useEffect(() => {
+    // Load medicaments from localStorage
+    const storedMedicaments = localStorage.getItem('medicaments');
+    if (storedMedicaments) {
+      setSubmittedMedicaments(JSON.parse(storedMedicaments));
+    }
+  }, []);
+
 
   const selectTypeQuantite = (type: string) => {
     setTypeQuantite(type);
@@ -38,7 +49,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const medicament: Medicament = {
+    const newMedicament: Medicament = {
       nom,
       quantite,
       typeQuantite,
@@ -47,7 +58,12 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
       medicationImage // Cela peut maintenant être soit une string, soit null
     };
 
-    onAddMedicament(medicament);
+    onAddMedicament(newMedicament);
+
+    const updatedMedicaments = [...submittedMedicaments, newMedicament];
+    setSubmittedMedicaments(updatedMedicaments);
+    localStorage.setItem('medicaments', JSON.stringify(updatedMedicaments)); // Save to localStorage
+
     setNom('');
     setQuantite('');
     setJours('');
@@ -55,8 +71,6 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
     setHoraires({ matin: false, midi: false, apresmidi: false, soir: false });
     setMedicationImage(null); // Réinitialisation correcte
   };
-
-
 
   const handleImageUpload = (event: { target: { files: FileList | null; }; }) => {
     const file = event.target.files?.[0];
@@ -85,7 +99,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg border-2 border-r-customBlue">
         <Typography sx={{ fontFamily: 'Homemade Apple' }} variant="h5" gutterBottom>
           {t('Add a drug')}
         </Typography>
@@ -158,7 +172,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             margin="normal"
           />
         </div>
-        <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4">
+        <div className="flex flex-wrap md:flex-nowrap justify-center md:space-x-2 mb-4 font-h1">
           {[
             { label: t('Daytime.Morning'), value: 'matin', heureDebut: 7, heureFin: 9 },
             { label: t('Daytime.Noon'), value: 'midi', heureDebut: 12, heureFin: 1 },

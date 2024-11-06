@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
@@ -18,6 +18,19 @@ const App: React.FC = () => {
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
 
+  // Load data from local storage on component mount
+  useEffect(() => {
+    const storedJoursData = localStorage.getItem('joursData');
+    const storedMedicamentsList = localStorage.getItem('medicamentsList');
+
+    if (storedJoursData) {
+      setJoursData(JSON.parse(storedJoursData));
+    }
+    if (storedMedicamentsList) {
+      setMedicamentsList(JSON.parse(storedMedicamentsList));
+    }
+  }, []);
+
   const ajouterMedicament = (medicament: Medicament) => {
     const updatedJoursData = { ...joursData };
 
@@ -31,62 +44,7 @@ const App: React.FC = () => {
 
     setJoursData(updatedJoursData);
     setMedicamentsList((prev) => [...prev, medicament]);
-  }
-    const styles = StyleSheet.create({
-      page: {
-        padding: 20,
-      },
-      image: {
-        width: '100%',
-        height: 'auto',
-      },
-    });
-      const divRef = useRef<HTMLDivElement>(null);
-      const [imageSrc, setImageSrc] = useState<string | null>(null);
-    
-   
-      const handleCaptureAndDownload = () => {
-        const elementToCapture = document.getElementById('capture-section');
-        if (elementToCapture) {
-          html2canvas(elementToCapture, { scale: 2 }).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({
-              orientation: 'portrait', // ou 'landscape' pour le mode paysage
-              unit: 'pt',
-              format: 'a4',
-            });
-    
-            const pageWidth = pdf.internal.pageSize.getWidth()-60;
-            const pageHeight = pdf.internal.pageSize.getHeight()-30;
-            const imgWidth = canvas.width;
-            const imgHeight = canvas.height;
-            const ratio = imgWidth / imgHeight;
-    
-            let position = 50;
-            let remainingHeight = imgHeight+50;
-    
-            // Ajout d'images multiples pour le contenu qui dépasse une page
-            while (remainingHeight > 0) {
-              pdf.addImage(
-                imgData,
-                'PNG',
-                30,
-                position,
-                pageWidth,
-                pageWidth / ratio // Calculer la hauteur en maintenant le ratio
-              );
-              remainingHeight -= pageHeight;
-              position -= pageHeight-30; // Décaler la position pour l'image suivante
-              if (remainingHeight > 0) {
-                pdf.addPage();
-              }
-            }
-    
-            pdf.save('capture.pdf');
-          });
-        }
-      };
-      
+  };
 
   return (
     <Box
@@ -96,7 +54,7 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={[t('Navbar.Home'), t('Navbar.About'), t('Navbar.Contact')]} />
+      <Navbar navItems={['🏠', '👥', '📝']} />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
@@ -110,7 +68,7 @@ const App: React.FC = () => {
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" sx={{ flexBasis: '33.33%', padding: 2, flex: 1, height: 'fit-content' }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 

@@ -1,0 +1,46 @@
+{
+    "Navbar": {
+        "Home": "Hem",
+        "About": "Om oss",
+        "Contact": "Kontakt"
+    },
+    "Daytime": {
+        "Morning": "morgon",
+        "Noon": "middag",
+        "Afternoon": "eftermiddag",
+        "Evening": "kväll"
+    },
+    "For": "under",
+    "Units": {
+        "Spoon_singular": "sked",
+        "Spoon_plural": "skedar",
+        "Pill_singular": "tablett",
+        "Pill_plural": "tabletter",
+        "Bag_singular": "påse",
+        "Bag_plural": "påsar",
+        "Unit_singular": "enhet",
+        "Unit_plural": "enheter",
+        "Puff_singular": "puff",
+        "Puff_plural": "puffar",
+        "Effervescent": "brustablett"
+    },
+    "Add a drug": "Lägg till ett läkemedel",
+    "Drug name": "Läkemedelsnamn",
+    "Upload file": "Bild",
+    "Quantity": "Mängd",
+    "Days": "Dagar",
+    "Add": "Lägg till",
+    "Drugs list": "Läkemedelslista",
+    "Daily drugs table": "Daglig läkemedelstabell",
+    "Day": "Dag",
+    "Date": "Datum",
+    "Days of Week": {
+        "Monday": "måndag",
+        "Tuesday": "tisdag",
+        "Wednesday": "onsdag",
+        "Thursday": "torsdag",
+        "Friday": "fredag",
+        "Saturday": "lördag",
+        "Sunday": "söndag"
+    }
+}

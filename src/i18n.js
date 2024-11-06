@@ -8,6 +8,7 @@ import es from '../public/locales/es/translation.json';
 import pt from '../public/locales/pt/translation.json';
 import it from '../public/locales/it/translation.json';
 import cn from '../public/locales/cn/translation.json';
+import se from '../public/locales/se/translation.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -24,6 +25,7 @@ i18n
             es: { translation: es },
             pt: { translation: pt },
             it: { translation: it },
+            se: { translation: se },
             cn: { translation: cn },
         },
         fallbackLng: "en",
