@@ -56,21 +56,21 @@ const App: React.FC = () => {
               format: 'a4',
             });
     
-            const pageWidth = pdf.internal.pageSize.getWidth()-50;
-            const pageHeight = pdf.internal.pageSize.getHeight();
+            const pageWidth = pdf.internal.pageSize.getWidth()-60;
+            const pageHeight = pdf.internal.pageSize.getHeight()-30;
             const imgWidth = canvas.width;
             const imgHeight = canvas.height;
             const ratio = imgWidth / imgHeight;
     
-            let position = 10;
-            let remainingHeight = imgHeight;
+            let position = 50;
+            let remainingHeight = imgHeight+50;
     
             // Ajout d'images multiples pour le contenu qui dépasse une page
             while (remainingHeight > 0) {
               pdf.addImage(
                 imgData,
                 'PNG',
-                0,
+                30,
                 position,
                 pageWidth,
                 pageWidth / ratio // Calculer la hauteur en maintenant le ratio
@@ -86,6 +86,7 @@ const App: React.FC = () => {
           });
         }
       };
+      
 
   return (
     <Box
