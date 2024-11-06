@@ -112,12 +112,26 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           margin="normal"
         />
 
-        <Button
+<Button
           component="label"
           role={undefined}
+          disableRipple
+          disableElevation
           tabIndex={-1}
           sx={{
-            margin: '10px'
+            margin: '10px',
+            ':hover': {
+              backgroundColor: 'transparent',
+            },
+            ':focus': {
+              outline: 'none',
+              boxShadow: 'none',
+              backgroundColor: 'transparent',
+            },
+            ':active': {
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+            },
           }}
         >
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-customBlue relative flex gap-2 p-1 mt-2'>
@@ -188,17 +202,29 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
            <img src={`./${value}.svg`} alt=""  width="50" height="50" />
 
               <p>{label}</p>
-              {/* <Horloge
-                heureDebutInitiale={heureDebut}
-                heureFinInitiale={heureFin}
-                texteFinal={label}
-                afficherHeures={false}
-              /> */}
+        
             </div>
           ))}
         </div>
-
-        <Button type="submit">
+        <Button
+          type="submit"
+          disableRipple
+          disableElevation
+          sx={{
+            ':hover': {
+              backgroundColor: 'transparent',
+            },
+            ':focus': {
+              outline: 'none',
+              boxShadow: 'none',
+              backgroundColor: 'transparent',
+            },
+            ':active': {
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+            },
+          }}
+        >
           <span className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-customBlue relative flex gap-2 p-1 mt-2'>
               <span className="relative text-white m-1">{t('Add')} </span>
               <span>

@@ -92,23 +92,32 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
             <TableCell>
               {/* <Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /> */}
               <img src="./matin.svg" alt="" width="50" height="50" />
-              <p>{t('Daytime.Morning')}</p>
+              <Typography sx={{ fontFamily: 'Kalam' }} gutterBottom>
+              {t('Daytime.Morning')}
+        </Typography>
+           
             </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /> */}
               <img src="./midi.svg" alt="" width="50" height="50" />
-              <p>{t('Daytime.Noon')}</p>
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Noon')}
+        </Typography>
             </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /> */}
               <img src="./apresmidi.svg" alt="" width="50" height="50" />
-              <p>{t('Daytime.Afternoon')}</p>
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Afternoon')}
+        </Typography>
               </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /> */}
               <div className='flex flex-col items-center justify-center '>
               <img src="./soir.svg" alt="" width="50" height="50" />
-              <p>{t('Daytime.Evening')}</p>
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Evening')}
+        </Typography>
                             </div>
               </TableCell>
           </TableRow>

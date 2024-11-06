@@ -17,15 +17,23 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 import useTheme from "./context/useTheme.ts";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import Tooltip from "@mui/material/Tooltip";
 
+declare global {
+  interface Window {
+    location: Location;
+  }
+}
 interface Props {
   navItems: string[];
   window?: () => Window;
+  onRefresh: () => void;
 }
 
 const drawerWidth = 240;
 
-const Navbar: React.FC<Props> = ({ navItems, window }) => {
+const Navbar: React.FC<Props> = ({ navItems, window, onRefresh }) => {
   const { t, i18n } = useTranslation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
@@ -88,13 +96,22 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
           >
             <MenuIcon />
           </IconButton>
+          
+          <Tooltip title="Rafraîchir la page">
+            <IconButton sx={{ color: "white" }} aria-label="refresh" onClick={onRefresh}>
+              <RefreshIcon sx={{ fontSize: 40 }} />
+            </IconButton>
+          </Tooltip>
+
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, fontSize: "1.5rem", fontFamily: "Kalam" }}
           >
             MediPlan
+
           </Typography>
+
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
@@ -103,6 +120,7 @@ const Navbar: React.FC<Props> = ({ navItems, window }) => {
               </Button>
             ))}
           </Box>
+
 
           {/* Dark Mode Toggle Button */}
           <button onClick={toggleDarkMode} className="-ml-6 p-8 lg:p-6 bg-none dark:bg-none text-4xl">

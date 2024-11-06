@@ -105,7 +105,10 @@ const App: React.FC = () => {
       });
     }
   };
-  
+  const handleRefresh = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <Box
@@ -115,10 +118,12 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={['🏠', '👥', '📝']} />
+      <Navbar navItems={['🏠', '👥', '📝']} onRefresh={handleRefresh}  />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
+
+ 
         <Stack
           direction={{ xs: 'column', md: 'row' }}
           spacing={3}
