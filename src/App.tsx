@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
+
+import html2canvas from 'html2canvas';
+// import { StyleSheet } from '@react-pdf/renderer';
+import jsPDF from 'jspdf';
+import DownloadIcon from '@mui/icons-material/Download';
+import RefreshIcon from '@mui/icons-material/Refresh';
+
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -30,7 +37,7 @@ const App: React.FC = () => {
     const updatedJoursData = { ...joursData };
 
     // Ajouter le médicament pour chaque jour spécifié
-    for (let i = 1; i <= +medicament.jours; i++) {
+    for (let i = medicament.jourDebut; i <= +medicament.jours+medicament.jourDebut-1; i++) {
       if (!updatedJoursData[i]) {
         updatedJoursData[i] = [];
       }
@@ -58,6 +65,55 @@ const App: React.FC = () => {
   };
   console.log('handleCookiesCleared', handleCookiesCleared);
 
+  const handleRefresh = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+  const handleCaptureAndDownload = () => {
+    const elementToCapture = document.getElementById('capture-section');
+    if (elementToCapture) {
+      html2canvas(elementToCapture, { scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait', // ou 'landscape' pour le mode paysage
+          unit: 'pt',
+          format: 'a4',
+        });
+
+        const pageWidth = pdf.internal.pageSize.getWidth()-60;
+        const pageHeight = pdf.internal.pageSize.getHeight()-30;
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = imgWidth / imgHeight;
+
+        let position = 50;
+        let remainingHeight = imgHeight+50;
+
+        // Ajout d'images multiples pour le contenu qui dépasse une page
+        while (remainingHeight > 0) {
+          pdf.addImage(
+            imgData,
+            'PNG',
+            30,
+            position,
+            pageWidth,
+            pageWidth / ratio // Calculer la hauteur en maintenant le ratio
+          );
+          remainingHeight -= pageHeight;
+          position -= pageHeight-30; // Décaler la position pour l'image suivante
+          if (remainingHeight > 0) {
+            pdf.addPage();
+          }
+        }
+
+        pdf.save('capture.pdf');
+        // handleRefresh();
+        console.log("refresh")
+      });
+    }
+  };
+
+
   return (
     <Box
       className="bg-white text-black dark:bg-gray-900 dark:text-white"
@@ -66,31 +122,42 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={['🏠', '👥', '📝']} />
+      <Navbar navItems={['🏠', '👥', '📝']}  />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
+
+ 
         <Stack
           direction={{ xs: 'column', md: 'row' }}
           spacing={3}
           sx={{
             width: '100%',
-            maxWidth: 1200,
+          
             paddingX: 2,
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" className="shadow-lg" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>,
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 2, height: 'fit-content' }}>
+          <Paper  variant="outlined" sx={{ flexBasis: '66.66%',padding: 2, flex: 2, height: 'fit-content' }}>
+          <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>Générer le PDF</Button>
+          <Tooltip title="Rafraîchir la page pour une nouvelle liste">
+            <IconButton sx={{ color: "#061439" }} aria-label="refresh" onClick={handleRefresh}>
+              <RefreshIcon sx={{ fontSize: 40 }} />
+            </IconButton>
+          </Tooltip>
+            <div id="capture-section">         
+       
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
               {t('Drugs list')}
-            </Typography>
+            </Typography>            
             <ListeMedicaments medicaments={medicamentsList} />
             <Tableau joursData={joursData} />
+            </div>
           </Paper>
         </Stack>
       </Box>
@@ -105,5 +172,6 @@ const App: React.FC = () => {
     </Box>
   );
 };
+
 
 export default App;

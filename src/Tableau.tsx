@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
-import Horloge from './Horloge';
 import { Medicament } from './medicament' ;
 import { useTranslation } from 'react-i18next';
 
@@ -28,23 +27,16 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
   const getDateForDay = (day: number) => {
     const date = new Date();
     date.setDate(date.getDate() + day - 1);
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    };
     
-    // Get weekday name from the date
-    const weekdayIndex = date.getDay(); // getDay() returns 0 (Sunday) to 6 (Saturday)
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const weekday = weekdays[weekdayIndex];
+    const formattedDate = date.toLocaleDateString(i18n.language, options);
 
-    // Use translation for weekday
-    const translatedWeekday = t(`Days of Week.${weekday}`);
-
-    // Format the rest of the date
-    const formattedDate = date.toLocaleDateString(i18n.language, {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit"
-    });
-
-    return `${translatedWeekday}, ${formattedDate}`;
+    return formattedDate;
   };
 
   const renderImages = (type: string, quantity: number) => {
@@ -56,7 +48,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
         type='cachets'
         break;
         case 'Puff':
-          type=' bouffees'
+          type='bouffees'
           break;
         case 'Bag':
           type='sachets'
@@ -70,6 +62,8 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
     }
 
     const imageSrc = typeImages[type];
+    console.log("imagesrc",imageSrc)
+    console.log(typeImages,type)
     if (!imageSrc) return null;
 
     return Array.from({ length: quantity }, (_, i) => (
@@ -80,11 +74,13 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
         alt={type}
         sx={{ width: 24, height: 24, marginX: 0.5 }}
       />
+  
+     
     ));
   };
 
   return (
-    <TableContainer component={Paper} className="border-2 border-r-customBlue">
+    <TableContainer component={Paper}>
       <Typography variant="h5" component="h2" sx={{ margin: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
         {t('Daily drugs table')}
       </Typography>
@@ -93,10 +89,37 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
           <TableRow>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Day')}</Typography></TableCell>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Date')}</Typography></TableCell>
-            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /></TableCell>
-            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /></TableCell>
-            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /></TableCell>
-            <TableCell sx={{ fontFamily: 'Kalam' }}><Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /></TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /> */}
+              <img src="./matin.svg" alt="" width="50" height="50" />
+              <Typography sx={{ fontFamily: 'Kalam' }} gutterBottom>
+              {t('Daytime.Morning')}
+        </Typography>
+           
+            </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /> */}
+              <img src="./midi.svg" alt="" width="50" height="50" />
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Noon')}
+        </Typography>
+            </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /> */}
+              <img src="./apresmidi.svg" alt="" width="50" height="50" />
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Afternoon')}
+        </Typography>
+              </TableCell>
+            <TableCell>
+              {/* <Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /> */}
+              <div className='flex flex-col items-center justify-center '>
+              <img src="./soir.svg" alt="" width="50" height="50" />
+              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
+              {t('Daytime.Evening')}
+        </Typography>
+                            </div>
+              </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -133,8 +156,8 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                         </Typography>
                         </div>
                         <div>
-                      
-                        {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
+                   
+                          {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                         </div>
                       </Box>
                       
