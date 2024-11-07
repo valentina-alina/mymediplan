@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Formulaire from './Formulaire';
-import Tableau from './Tableau';
-import ListeMedicaments from './ListeMedicaments';
-import { Box, Button, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+
+import { Box, Button, CircularProgress, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +11,9 @@ import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
+const Formulaire = lazy(() => import('./Formulaire'));
+const Tableau = lazy(() => import('./Tableau'));
+const ListeMedicaments = lazy(() => import('./ListeMedicaments'));
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -139,7 +140,9 @@ const App: React.FC = () => {
         >
           {/* Formulaire Section */}
           <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
-            <Formulaire onAddMedicament={ajouterMedicament} />
+            <Suspense fallback={<CircularProgress />}>
+              <Formulaire onAddMedicament={ajouterMedicament} />
+            </Suspense>
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
@@ -153,9 +156,12 @@ const App: React.FC = () => {
             <div id="capture-section">
               <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
                 {t('Drugs list')}
-              </Typography>            
-              <ListeMedicaments medicaments={medicamentsList} />
-              <Tableau joursData={joursData} />
+              </Typography>
+              
+              <Suspense fallback={<CircularProgress />}>
+                <ListeMedicaments medicaments={medicamentsList} />
+                <Tableau joursData={joursData} />
+              </Suspense>
             </div>
           </Paper>
         </Stack>
