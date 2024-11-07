@@ -74,8 +74,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
         alt={type}
         sx={{ width: 24, height: 24, marginX: 0.5 }}
       />
-  
-     
+
     ));
   };
 

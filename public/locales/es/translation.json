@@ -27,8 +27,9 @@
     "Add a drug": "Agregar un medicamento",
     "Drug name": "Nombre del medicamento",
     "Upload file": "Foto",
-    "Quantity": "Cantidad",
-    "Days": "Días",
+    "Quantity": "Posología",
+    "Days": "Duración tratamiento (días)",
+    "FirstDay":"Día de inicio",
     "Add": "Agregar",
     "Drugs list": "Lista de medicamentos",
     "Daily drugs table": "Tabla de medicamentos / día",
@@ -42,5 +43,6 @@
         "Friday": "viernes",
         "Saturday": "sábado",
         "Sunday": "domingo"
-    }
+    },
+    "GeneratePDF": "Generar PDF"
 }

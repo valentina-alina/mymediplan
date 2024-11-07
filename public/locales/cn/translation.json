@@ -27,8 +27,9 @@
     "Add a drug": "添加药物",
     "Drug name": "药物名称",
     "Upload file": "图片",
-    "Quantity": "数量",
-    "Days": "天数",
+    "Quantity": "服药剂量",
+    "Days": " 治疗天数",
+    "FirstDay":"第一天",
     "Add": "增加",
     "Drugs list": "药物清单",
     "Daily drugs table": "每日用药表",
@@ -42,5 +43,6 @@
         "Friday": "周五",
         "Saturday": "周六",
         "Sunday": "周日"
-    }
+    },
+    "GeneratePDF": "生成 PDF "
 }

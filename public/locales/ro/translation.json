@@ -10,14 +10,39 @@
         "Afternoon": "Après-midi",
         "Evening": "Soir"
     },
+    "For": "pendant",
+    "Units": {
+        "Spoon_singular": "cuillère",
+        "Spoon_plural": "cuillères",
+        "Pill_singular": "cachet",
+        "Pill_plural": "cachets",
+        "Bag_singular": "sachet",
+        "Bag_plural": "sachets",
+        "Unit_singular": "unité",
+        "Unit_plural": "unités",
+        "Puff_singular": "bouffée",
+        "Puff_plural": "bouffées",
+        "Effervescent": "effervescent"
+    },
     "Add a drug": "Ajouter un médicament",
     "Drug name": "Nom du médicament",
     "Upload file": "Charger fichier",
-    "Quantity": "Quantité",
-    "Days": "Jours",
+    "Quantity": "Posologie",
+    "Days": "Durée du traitement (jours)",
+    "FirstDay":"Jour de début",
     "Add": "Ajouter",
     "Drugs list": "Liste des médicaments",
     "Daily drugs table": "Tableau des médicaments / jour",
     "Day": "Jour",
-    "Date": "Date"
+    "Date": "Date",
+    "Days of Week": {
+        "Monday": "lundi",
+        "Tuesday": "mardi",
+        "Wednesday": "mercredi",
+        "Thursday": "jeudi",
+        "Friday": "vendredi",
+        "Saturday": "samedi",
+        "Sunday": "dimanche"
+    },
+    "GeneratePDF": "Générer PDF"
 }

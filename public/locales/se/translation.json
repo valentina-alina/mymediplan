@@ -27,8 +27,9 @@
     "Add a drug": "Lägg till ett läkemedel",
     "Drug name": "Läkemedelsnamn",
     "Upload file": "Bild",
-    "Quantity": "Mängd",
-    "Days": "Dagar",
+    "Quantity": "Posologi",
+    "Days": "Behandingstid (dagar)",
+    "FirstDay":"Första dagen",
     "Add": "Lägg till",
     "Drugs list": "Läkemedelslista",
     "Daily drugs table": "Daglig läkemedelstabell",
@@ -42,5 +43,6 @@
         "Friday": "fredag",
         "Saturday": "lördag",
         "Sunday": "söndag"
-    }
+    },
+    "GeneratePDF": "Generera PDF"
 }

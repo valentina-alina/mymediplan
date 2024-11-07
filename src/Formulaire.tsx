@@ -186,8 +186,7 @@ console.log('submitedMedic',submittedMedicaments)
             fullWidth
             margin="normal"
           />
-         
-             <TextField    
+            <TextField    
             label={t('FirstDay')}
             type="number"
             value={jourDebut}
@@ -211,7 +210,7 @@ console.log('submitedMedic',submittedMedicaments)
               className={` flex flex-col items-center justify-center cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? ' shadow-lg border-2 border-blue-500' : 'border border-gray-300'
                 } rounded`}
             >
-           <img src={`./${value}.svg`} alt=""  width="50" height="50" />
+            <img src={`./${value}.svg`} alt=""  width="50" height="50" />
 
               <p>{label}</p>
         

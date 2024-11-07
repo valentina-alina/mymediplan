@@ -27,8 +27,9 @@
     "Add a drug": "Add a drug",
     "Drug name": "Drug name",
     "Upload file": "Picture",
-    "Quantity": "Quantity",
-    "Days": "Days",
+    "Quantity": "Posology",
+    "Days": "Treatment duration (days)",
+    "FirstDay":"Initial day",
     "Add": "Add",
     "Drugs list": "Drugs list",
     "Daily drugs table": "Daily drugs table",
@@ -42,5 +43,6 @@
         "Friday": "Friday",
         "Saturday": "Saturday",
         "Sunday": "Sunday"
-    }
+    },
+    "GeneratePDF": "Generate PDF"
 }

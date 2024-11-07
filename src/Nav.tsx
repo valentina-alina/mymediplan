@@ -17,7 +17,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 import useTheme from "./context/useTheme.ts";
-
+import ReactCountryFlag from 'react-country-flag';
 declare global {
   interface Window {
     location: Location;
@@ -138,14 +138,102 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             transformOrigin={{ vertical: "top", horizontal: "right" }}
           >
-            <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
-            <MenuItem onClick={() => changeLanguage("fr")}>Français</MenuItem>
-            <MenuItem onClick={() => changeLanguage("es")}>Español</MenuItem>
-            <MenuItem onClick={() => changeLanguage("ro")}>Română</MenuItem>
-            <MenuItem onClick={() => changeLanguage("pt")}>Português</MenuItem>
-            <MenuItem onClick={() => changeLanguage("it")}>Italiano</MenuItem>
-            <MenuItem onClick={() => changeLanguage("se")}>Svenska</MenuItem>
-            <MenuItem onClick={() => changeLanguage("cn")}>中文</MenuItem>
+            <MenuItem onClick={() => changeLanguage("en")}>
+              <ReactCountryFlag
+                  countryCode="US"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="US"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("fr")}>
+              <ReactCountryFlag
+                  countryCode="FR"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="France"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("es")}>
+              <ReactCountryFlag
+                  countryCode="ES"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="España"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("ro")}>
+              <ReactCountryFlag
+                  countryCode="RO"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="România"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("pt")}>
+              <ReactCountryFlag
+                  countryCode="PT"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="Portugal"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("it")}>
+              <ReactCountryFlag
+                  countryCode="IT"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="Italia"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("se")}>
+              <ReactCountryFlag
+                  countryCode="SE"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="Sverige"
+                  className="mr-auto"
+              />
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("cn")}>
+              <ReactCountryFlag
+                  countryCode="CN"
+                  svg
+                  style={{
+                      width: "5em",
+                      height: "1.5em",
+                  }}
+                  title="China | 中国"
+                  className="mr-auto"
+              />
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

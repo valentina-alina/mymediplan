@@ -127,9 +127,9 @@ const App: React.FC = () => {
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
 
- 
         <Stack
           direction={{ xs: 'column', md: 'row' }}
+          marginX={8}
           spacing={3}
           sx={{
             width: '100%',
@@ -138,25 +138,24 @@ const App: React.FC = () => {
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>,
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 
           {/* ListeMedicaments and Tableau Section */}
           <Paper  variant="outlined" sx={{ flexBasis: '66.66%',padding: 2, flex: 2, height: 'fit-content' }}>
-          <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>Générer le PDF</Button>
+          <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>{t('GeneratePDF')}</Button>
           <Tooltip title="Rafraîchir la page pour une nouvelle liste">
             <IconButton sx={{ color: "#061439" }} aria-label="refresh" onClick={handleRefresh}>
               <RefreshIcon sx={{ fontSize: 40 }} />
             </IconButton>
           </Tooltip>
-            <div id="capture-section">         
-       
-            <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
-              {t('Drugs list')}
-            </Typography>            
-            <ListeMedicaments medicaments={medicamentsList} />
-            <Tableau joursData={joursData} />
+            <div id="capture-section">
+              <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
+                {t('Drugs list')}
+              </Typography>            
+              <ListeMedicaments medicaments={medicamentsList} />
+              <Tableau joursData={joursData} />
             </div>
           </Paper>
         </Stack>
