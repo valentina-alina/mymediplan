@@ -18,6 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 import useTheme from "./context/useTheme.ts";
 import ReactCountryFlag from 'react-country-flag';
+import { Alert } from "@mui/material";
 declare global {
   interface Window {
     location: Location;
@@ -81,7 +82,7 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", marginBottom: {xs: '50px', lg: '20px'} }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: "#061439" }}>
         <Toolbar>
@@ -236,7 +237,11 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
             </MenuItem>
           </Menu>
         </Toolbar>
+        <Alert severity="info" sx={{ borderRadius: '0px' }}>
+          Ce projet est en phase de test pour une évolution ultérieure
+        </Alert>
       </AppBar>
+      
       <nav>
         <Drawer
           container={container}
