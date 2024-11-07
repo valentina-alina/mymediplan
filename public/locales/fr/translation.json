@@ -44,5 +44,21 @@
         "Saturday": "samedi",
         "Sunday": "dimanche"
     },
-    "GeneratePDF": "Générer PDF"
-}
+    "GeneratePDF": "Générer PDF",
+    "title": "Bienvenue sur l'Application de Gestion des Prescriptions Médicales",
+    "subtitle": "Gérez facilement vos prescriptions en créant des formulaires de médicament et en générant automatiquement une planification personnalisée.",
+    "features": {
+      "form": "Création de Formulaires de Médicaments",
+      "formDescription": "Remplissez des informations clés comme le type de médicament, la quantité, la durée du traitement, et le premier jour de prise.",
+      "schedule": "Planification Automatique",
+      "scheduleDescription": "À partir des données saisies, l'application génère un calendrier de traitement, facilitant le suivi quotidien de la médication.",
+      "persistence": "Persistance des Données",
+      "persistenceDescription": "Les informations sont stockées dans le local storage, permettant de restaurer la planification même en cas de fermeture accidentelle de la page.",
+      "accessibility": "Accessibilité et Simplicité",
+      "accessibilityDescription": "Une interface simple et intuitive pour une utilisation quotidienne, avec des options d'inclusion de photos pour une meilleure identification des médicaments."
+    },
+    "howItWorks": "Comment ça fonctionne ?",
+    "howItWorksDescription": "Lors de l'ajout d'une prescription, vous pouvez renseigner des informations détaillées, telles que le type de médicament, la quantité et la durée du traitement. Une fois ces informations saisies, l'application génère automatiquement un plan de traitement quotidien. Ce plan est accessible en tout temps et vous aide à suivre facilement la prise de vos médicaments.",
+    "accessForm": "Accéder au Formulaire"
+  }
+  
