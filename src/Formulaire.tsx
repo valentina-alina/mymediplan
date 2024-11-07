@@ -207,7 +207,7 @@ console.log('submitedMedic',submittedMedicaments)
               key={value}
               onClick={() => toggleHoraire(value as keyof typeof horaires)}
               // style={{ width: '110px', height: '110px' }}
-              className={` flex flex-col items-center justify-center cursor-pointer p-2 m-2 ${horaires[value as keyof typeof horaires] ? ' shadow-lg border-2 border-blue-500' : 'border border-gray-300'
+              className={`w-[110px] h-[110px] flex flex-col items-center justify-center cursor-pointer p-2 m-2 border-2 ${horaires[value as keyof typeof horaires] ? ' shadow-lg border-2 border-blue-500' : 'border border-gray-300'
                 } rounded`}
             >
             <img src={`./${value}.svg`} alt=""  width="80" height="auto" />

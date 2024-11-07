@@ -166,7 +166,7 @@ const App: React.FC = () => {
         <Typography
           variant="body2"
           sx={{ fontSize: '1.5rem', fontFamily: 'Kalam' }}
-        >© 2024 MediPlan</Typography>
+        >© 2024 MediPlan 💊</Typography>
       </Box>
     </Box>
   );
