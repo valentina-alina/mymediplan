@@ -48,7 +48,7 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
         type='cachets'
         break;
         case 'Puff':
-          type=' bouffees'
+          type='bouffees'
           break;
         case 'Bag':
           type='sachets'

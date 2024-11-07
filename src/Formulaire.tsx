@@ -1,89 +1,98 @@
 import React, { useEffect, useState } from 'react';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, Tooltip } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
-import { MdAddToPhotos } from "react-icons/md";
-import { Medicament } from './medicament';
 import { useTranslation } from 'react-i18next';
+import { getQuantiteTypes } from './quantiteTypes'; // Import du tableau de types de quantités
+import { Medicament } from './medicament';
+import { MdAddToPhotos } from 'react-icons/md';
 
-type FormulaireProps = {
+
+interface FormulaireProps {
   onAddMedicament: (medicament: Medicament) => void;
-};
+}
 
 const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
-  const { t, i18n } = useTranslation();
-  console.log('i18n', i18n);
-  const [nom, setNom] = useState('');
-  const [quantite, setQuantite] = useState('');
-  const [jours, setJours] = useState('');
-  const [typeQuantite, setTypeQuantite] = useState('');
+  const { t } = useTranslation();
+
+  const quantiteTypes = getQuantiteTypes();
+console.log(quantiteTypes);
+  // États pour les champs du formulaire
+  const [nom, setNom] = useState<string>('');
+  const [quantite, setQuantite] = useState<string>('1');
+  const [jours, setJours] = useState<string>('1');
+  const [jourDebut, setJourDebut] = useState<string>('1');
+  const [typeQuantite, setTypeQuantite] = useState<string>('');
   const [horaires, setHoraires] = useState({
     matin: false,
     midi: false,
     apresmidi: false,
     soir: false,
   });
-
   const [submittedMedicaments, setSubmittedMedicaments] = useState<Medicament[]>([]);
-  console.log('submittedMedicaments', submittedMedicaments);
+  const [medicationImage, setMedicationImage] = useState<string | null>(null); // Image du médicament
 
   useEffect(() => {
-    // Load medicaments from localStorage
+    // Chargement des médicaments depuis le localStorage
     const storedMedicaments = localStorage.getItem('medicaments');
     if (storedMedicaments) {
       setSubmittedMedicaments(JSON.parse(storedMedicaments));
     }
   }, []);
 
-
+  // Fonction pour sélectionner un type de quantité
   const selectTypeQuantite = (type: string) => {
     setTypeQuantite(type);
   };
 
+  // Fonction pour basculer l'état des horaires (matin, midi, etc.)
   const toggleHoraire = (horaire: keyof typeof horaires) => {
     setHoraires((prev) => ({ ...prev, [horaire]: !prev[horaire] }));
-    console.log(`Horaire cliqué: ${horaire}`);
   };
-  const [medicationImage, setMedicationImage] = useState<string | null>(null);
+
+  // Gestion de l'envoi du formulaire
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     const newMedicament: Medicament = {
       nom,
       quantite,
       typeQuantite,
       horaires,
-      jours:+jours,
-      medicationImage // Cela peut maintenant être soit une string, soit null
+      jours: parseInt(jours, 10),
+      jourDebut: parseInt(jourDebut, 10),
+      medicationImage,
     };
 
     onAddMedicament(newMedicament);
 
     const updatedMedicaments = [...submittedMedicaments, newMedicament];
     setSubmittedMedicaments(updatedMedicaments);
-    localStorage.setItem('medicaments', JSON.stringify(updatedMedicaments)); // Save to localStorage
-
+    localStorage.setItem('medicaments', JSON.stringify(updatedMedicaments));
+console.log('submitedMedic',submittedMedicaments)
+    // Réinitialisation des champs
     setNom('');
     setQuantite('');
     setJours('');
+    setJourDebut('');
     setTypeQuantite('');
     setHoraires({ matin: false, midi: false, apresmidi: false, soir: false });
-    setMedicationImage(null); // Réinitialisation correcte
+    setMedicationImage(null);
   };
 
-  const handleImageUpload = (event: { target: { files: FileList | null; }; }) => {
+  // Gestion du téléchargement de l'image
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         if (typeof reader.result === 'string') {
           setMedicationImage(reader.result);
-          console.log(medicationImage)
         }
       };
       reader.readAsDataURL(file);
     }
   };
+
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
@@ -147,14 +156,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
           />
         </Button>
         <div className="flex flex-wrap justify-center mr-8 md:mr-0 m-2 md:m-4 space-x-4">
-          {[
-            { src: '/spoon.svg', key: 'Spoon', label: t('Units.Spoons') },
-            { src: '/tablet.png', key: 'Pill', label: t('Units.Pills') },
-            { src: '/bag.png', key: 'Bag', label: t('Units.Bags') },
-            { src: '/syringe.svg', key: 'Unit', label: t('Units.Units') },
-            { src: '/inhaler.png', key: 'Puff', label: t('Units.Puffs') },
-            { src: '/effervescent.png', key: 'Effervescent', label: t('Units.Effervescent') },
-          ].map(({ src, key, label }) => (
+        {quantiteTypes.map(({ src, key, label }) =>  (
             <img
               key={key}
               src={src}
@@ -180,6 +182,16 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
             type="number"
             value={jours}
             onChange={(e) => setJours(e.target.value)} // Correction ici
+            required
+            fullWidth
+            margin="normal"
+          />
+         
+             <TextField    
+            label={t('FirstDay')}
+            type="number"
+            value={jourDebut}
+            onChange={(e) => setJourDebut(e.target.value)} // Correction ici
             required
             fullWidth
             margin="normal"

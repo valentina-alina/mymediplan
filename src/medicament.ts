@@ -1,8 +1,16 @@
-export type Medicament = {
+// types.ts
+export interface Medicament {
     nom: string;
     quantite: string;
     typeQuantite: string;
-    horaires: { matin: boolean; midi: boolean; apresmidi: boolean; soir: boolean };
+    horaires: {
+      matin: boolean;
+      midi: boolean;
+      apresmidi: boolean;
+      soir: boolean;
+    };
     jours: number;
-    medicationImage: string | null;
-};
+    jourDebut: number;
+    medicationImage: string | null; // Image du médicament sous forme de URL ou null
+  }
+  

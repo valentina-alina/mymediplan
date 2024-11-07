@@ -35,7 +35,7 @@ const App: React.FC = () => {
     const updatedJoursData = { ...joursData };
 
     // Ajouter le médicament pour chaque jour spécifié
-    for (let i = 1; i <= +medicament.jours; i++) {
+    for (let i = medicament.jourDebut; i <= +medicament.jours+medicament.jourDebut-1; i++) {
       if (!updatedJoursData[i]) {
         updatedJoursData[i] = [];
       }
@@ -63,7 +63,10 @@ const App: React.FC = () => {
   };
   console.log('handleCookiesCleared', handleCookiesCleared);
 
-
+  const handleRefresh = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   const handleCaptureAndDownload = () => {
     const elementToCapture = document.getElementById('capture-section');
     if (elementToCapture) {
@@ -102,13 +105,12 @@ const App: React.FC = () => {
         }
 
         pdf.save('capture.pdf');
+        handleRefresh();
+        console.log("refresh")
       });
     }
   };
-  const handleRefresh = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+
 
   return (
     <Box
@@ -134,7 +136,7 @@ const App: React.FC = () => {
           }}
         >
           {/* Formulaire Section */}
-          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>
+          <Paper variant="outlined" sx={{ padding: 2, flex: 1, height: 'fit-content' }}>,
             <Formulaire onAddMedicament={ajouterMedicament} />
           </Paper>
 
