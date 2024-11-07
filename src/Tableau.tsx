@@ -83,42 +83,39 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
       <Typography variant="h5" component="h2" sx={{ margin: 2, fontWeight: 'bold', fontFamily: 'Kalam' }}>
         {t('Daily drugs table')}
       </Typography>
-      <Table>
+      <Table sx={{ width: { xs: '600px', lg: '1000px' } }}>
         <TableHead>
           <TableRow>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Day')}</Typography></TableCell>
             <TableCell><Typography variant="subtitle1" fontWeight="bold">{t('Date')}</Typography></TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={7} heureFinInitiale={9} texteFinal={t('Daytime.Morning')} afficherHeures={false} /> */}
-              <img src="./matin.svg" alt="" width="50" height="50" />
-              <Typography sx={{ fontFamily: 'Kalam' }} gutterBottom>
-              {t('Daytime.Morning')}
-        </Typography>
-           
+              <img src="./matin.svg" alt="" className="w-[60px] h-[60px]" />
+              <Typography sx={{ fontFamily: 'Kalam', marginLeft: { xs: '8px',lg: '10px'} }}>
+                {t('Daytime.Morning')}
+              </Typography>
             </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={12} heureFinInitiale={1} texteFinal={t('Daytime.Noon')} afficherHeures={false} /> */}
-              <img src="./midi.svg" alt="" width="50" height="50" />
-              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
-              {t('Daytime.Noon')}
-        </Typography>
+              <img src="./midi.svg" alt="" className="w-[60px] h-[60px]" />
+              <Typography sx={{ fontFamily: 'Kalam', marginLeft: { xs: '18px', lg: '10px' } }}  gutterBottom>
+                {t('Daytime.Noon')}
+              </Typography>
             </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={4} heureFinInitiale={5} texteFinal={t('Daytime.Afternoon')} afficherHeures={false} /> */}
-              <img src="./apresmidi.svg" alt="" width="50" height="50" />
-              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
-              {t('Daytime.Afternoon')}
-        </Typography>
-              </TableCell>
+              <img src="./apresmidi.svg" alt="" className="w-[60px] h-[60px]" />
+              <Typography sx={{ fontFamily: 'Kalam', marginLeft: { xs: '2px', lg: '0px' } }}  gutterBottom>
+                {t('Daytime.Afternoon')}
+              </Typography>
+            </TableCell>
             <TableCell>
               {/* <Horloge heureDebutInitiale={7} heureFinInitiale={8} texteFinal={t('Daytime.Evening')} afficherHeures={false} /> */}
-              <div className='flex flex-col items-center justify-center '>
-              <img src="./soir.svg" alt="" width="50" height="50" />
-              <Typography sx={{ fontFamily: 'Kalam' }}  gutterBottom>
-              {t('Daytime.Evening')}
-        </Typography>
-                            </div>
-              </TableCell>
+                <img src="./soir.svg" alt="" className="w-[60px] h-[60px]" />
+                <Typography sx={{ fontFamily: 'Kalam', marginLeft: { xs: '18px', lg: '18px' } }}  gutterBottom>
+                  {t('Daytime.Evening')}
+                </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -142,20 +139,19 @@ const Tableau: React.FC<TableauProps> = ({ joursData }) => {
                           )}
                         </div>
                         <div>
-                        <Typography variant="body2" sx={{ marginRight: 1 }}>
-                          {medicament.nom}
-                        </Typography>
-                        <Typography variant="body2" sx={{ marginRight: 1 }}>
-                          <span>
-                            {medicament.quantite}{" "}
-                            {parseInt(medicament.quantite) === 1
-                              ? t(`Units.${medicament.typeQuantite}_singular`)
-                              : t(`Units.${medicament.typeQuantite}_plural`)}
-                          </span>
-                        </Typography>
+                          <Typography variant="body2" sx={{ marginRight: 1 }}>
+                            {medicament.nom}
+                          </Typography>
+                          <Typography variant="body2" sx={{ marginRight: 1 }}>
+                            <span>
+                              {medicament.quantite}{" "}
+                              {parseInt(medicament.quantite) === 1
+                                ? t(`Units.${medicament.typeQuantite}_singular`)
+                                : t(`Units.${medicament.typeQuantite}_plural`)}
+                            </span>
+                          </Typography>
                         </div>
                         <div>
-                   
                           {renderImages(medicament.typeQuantite, parseInt(medicament.quantite))}
                         </div>
                       </Box>
