@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Formulaire from './Formulaire';
 import Tableau from './Tableau';
 import ListeMedicaments from './ListeMedicaments';
-import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Paper, Stack, Tooltip, Typography } from '@mui/material';
 import Navbar from './Nav.tsx';
 import { Medicament } from './medicament.ts';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,8 @@ import html2canvas from 'html2canvas';
 // import { StyleSheet } from '@react-pdf/renderer';
 import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
+import RefreshIcon from '@mui/icons-material/Refresh';
+
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -105,7 +107,7 @@ const App: React.FC = () => {
         }
 
         pdf.save('capture.pdf');
-        handleRefresh();
+        // handleRefresh();
         console.log("refresh")
       });
     }
@@ -120,7 +122,7 @@ const App: React.FC = () => {
       minHeight="100vh"
       sx={{ overflow: 'hidden', padding: 0, margin: 0 }}
     >
-      <Navbar navItems={['🏠', '👥', '📝']} onRefresh={handleRefresh}  />
+      <Navbar navItems={['🏠', '👥', '📝']}  />
 
       {/* Main Content */}
       <Box mt={18} mb={6} display="flex" justifyContent="center" flex="1">
@@ -143,6 +145,11 @@ const App: React.FC = () => {
           {/* ListeMedicaments and Tableau Section */}
           <Paper  variant="outlined" sx={{ flexBasis: '66.66%',padding: 2, flex: 2, height: 'fit-content' }}>
           <Button variant="outlined" endIcon={<DownloadIcon  />} onClick={handleCaptureAndDownload}>Générer le PDF</Button>
+          <Tooltip title="Rafraîchir la page pour une nouvelle liste">
+            <IconButton sx={{ color: "#061439" }} aria-label="refresh" onClick={handleRefresh}>
+              <RefreshIcon sx={{ fontSize: 40 }} />
+            </IconButton>
+          </Tooltip>
             <div id="capture-section">         
        
             <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>

@@ -17,8 +17,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 import useTheme from "./context/useTheme.ts";
-import RefreshIcon from '@mui/icons-material/Refresh';
-import Tooltip from "@mui/material/Tooltip";
 
 declare global {
   interface Window {
@@ -28,12 +26,12 @@ declare global {
 interface Props {
   navItems: string[];
   window?: () => Window;
-  onRefresh: () => void;
+
 }
 
 const drawerWidth = 240;
 
-const Navbar: React.FC<Props> = ({ navItems, window, onRefresh }) => {
+const Navbar: React.FC<Props> = ({ navItems, window}) => {
   const { t, i18n } = useTranslation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
@@ -96,12 +94,12 @@ const Navbar: React.FC<Props> = ({ navItems, window, onRefresh }) => {
           >
             <MenuIcon />
           </IconButton>
-          
-          <Tooltip title="Rafraîchir la page">
+
+          {/* <Tooltip title="Rafraîchir la page">
             <IconButton sx={{ color: "white" }} aria-label="refresh" onClick={onRefresh}>
               <RefreshIcon sx={{ fontSize: 40 }} />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
 
           <Typography
             variant="h6"
