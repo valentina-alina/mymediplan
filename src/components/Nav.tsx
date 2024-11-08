@@ -16,16 +16,21 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
-import useTheme from "./context/useTheme.ts";
+import useTheme from "../context/useTheme.ts";
 import ReactCountryFlag from 'react-country-flag';
-import { Alert } from "@mui/material";
+import { Alert} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Height } from "@mui/icons-material";
+
+
+
 declare global {
   interface Window {
     location: Location;
   }
 }
 interface Props {
-  navItems: string[];
+  navItems: Array<{ icon: string; path: string }>;
   window?: () => Window;
 
 }
@@ -33,6 +38,7 @@ interface Props {
 const drawerWidth = 240;
 
 const Navbar: React.FC<Props> = ({ navItems, window}) => {
+  console.log(navItems)
   const { t, i18n } = useTranslation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
@@ -68,14 +74,22 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={t(item)} primaryTypographyProps={{ sx: { fontFamily: "Kalam", fontSize: "2.25rem" } }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+  {navItems.map((item, index) => (
+    <ListItem key={index} disablePadding>
+      <ListItemButton sx={{ textAlign: 'center' }}>
+        <Link to={item.path} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+          {/* Affichez l'icône ici */}
+          {item.icon} 
+          {item.icon && <span style={{ marginRight: 8 }}>{item.icon}</span>}
+          <ListItemText
+            // primary={item.icon} // Utilisez `item.title` pour le texte
+            primaryTypographyProps={{ sx: { fontFamily: 'Kalam', fontSize: '2.25rem' } }}
+          />
+        </Link>
+      </ListItemButton>
+    </ListItem>
+  ))}
+</List>
     </Box>
   );
 
@@ -96,26 +110,22 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
             <MenuIcon />
           </IconButton>
 
-          {/* <Tooltip title="Rafraîchir la page">
-            <IconButton sx={{ color: "white" }} aria-label="refresh" onClick={onRefresh}>
-              <RefreshIcon sx={{ fontSize: 40 }} />
-            </IconButton>
-          </Tooltip> */}
-
+      
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, fontSize: "1.5rem", fontFamily: "Kalam" }}
           >
             MediPlan
+            {/* <img  src='/planner.webp' style={{width :'100px', height:'100px'}} alt="" /> */}
 
           </Typography>
 
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
-              <Button key={index} sx={{ color: "#fff", fontSize: "2.35rem", fontFamily: "Kalam", margin: '8px 0 0 0' }}>
-                {t(item)}
+              <Button key={index} component={Link} to={item.path} sx={{ color: "#fff", fontSize: "1.2rem", fontFamily: "Kalam", margin: '8px 0 0 0' }}>
+                {t(item.icon)}
               </Button>
             ))}
           </Box>
