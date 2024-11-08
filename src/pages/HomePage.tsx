@@ -3,7 +3,6 @@
 import { Container, Typography, Box, Card, CardContent, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
 
 const HomePage: React.FC = () => {
