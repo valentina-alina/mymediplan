@@ -70,7 +70,7 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2, fontFamily: "Kalam" }}>
-        MediPlan
+        MyMediPlan
       </Typography>
       <Divider />
       <List>
@@ -116,7 +116,7 @@ const Navbar: React.FC<Props> = ({ navItems, window}) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, fontSize: "1.5rem", fontFamily: "Kalam" }}
           >
-            MediPlan
+           MyMediPlan
             {/* <img  src='/planner.webp' style={{width :'100px', height:'100px'}} alt="" /> */}
 
           </Typography>

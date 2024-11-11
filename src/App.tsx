@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Nav.tsx';
 import { CircularProgress } from '@mui/material';
+import Footer from './components/Footer.tsx';
 const Home = lazy(() => import('./pages/HomePage.tsx'));
 const Contact = lazy(() => import('./pages/Contact.tsx'));
 const Apropos = lazy(() => import('./pages/Apropos.tsx'));
@@ -55,6 +56,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/apropos" element={<Apropos />} /> */}
       </Routes>
+      <Footer/>
     </>
   );
 };
