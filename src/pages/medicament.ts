@@ -1,5 +1,6 @@
 // types.ts
 export interface Medicament {
+    username : string;
     nom: string;
     quantite: string;
     typeQuantite: string;

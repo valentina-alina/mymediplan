@@ -19,7 +19,7 @@ const Formulaire = lazy(() => import('./Formulaire.tsx'));
 
 const Planner: React.FC = () => {
   const { t, i18n } = useTranslation();
-  console.log('i18n', i18n);
+  // console.log('i18n', i18n);
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
 
@@ -52,7 +52,9 @@ const Planner: React.FC = () => {
 
     // Save to local storage
     localStorage.setItem('joursData', JSON.stringify(updatedJoursData));
+    console.log('jd',joursData)
     localStorage.setItem('medicamentsList', JSON.stringify([...medicamentsList, medicament]));
+    console.log('medic',medicament)
   };
 
   // Function to clear local storage
@@ -109,9 +111,8 @@ const Planner: React.FC = () => {
           }
         }
 
-        pdf.save('capture.pdf');
-        // handleRefresh();
-        console.log("refresh")
+        pdf.save('MonMediPlan.pdf');
+      
       });
     }
   };
@@ -159,6 +160,10 @@ const Planner: React.FC = () => {
             </IconButton>
           </Tooltip>
             <div id="capture-section">
+            <Typography variant="h2" sx={{ fontSize: '2rem', marginTop: 3, marginBottom: 2 }}>
+  {medicamentsList[0]?.username || 'Nom'}
+</Typography>
+
               <Typography variant="h2" sx={{ fontSize: '1.5rem', marginTop: 3, marginBottom: 2, fontFamily: 'Homemade Apple' }}>
                 {t('Drugs list')}
               </Typography>

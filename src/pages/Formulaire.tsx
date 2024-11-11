@@ -18,6 +18,7 @@ const Formulaire: React.FC<FormulaireProps> = ({ onAddMedicament }) => {
   const quantiteTypes = getQuantiteTypes();
 console.log(quantiteTypes);
   // États pour les champs du formulaire
+  const [username, setUsername] = useState<string>('');
   const [nom, setNom] = useState<string>('');
   const [quantite, setQuantite] = useState<string>('1');
   const [jours, setJours] = useState<string>('1');
@@ -54,6 +55,7 @@ console.log(quantiteTypes);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newMedicament: Medicament = {
+      username,
       nom,
       quantite,
       typeQuantite,
@@ -70,6 +72,7 @@ console.log(quantiteTypes);
     localStorage.setItem('medicaments', JSON.stringify(updatedMedicaments));
 console.log('submitedMedic',submittedMedicaments)
     // Réinitialisation des champs
+    setUsername('');
     setNom('');
     setQuantite('');
     setJours('');
@@ -108,11 +111,19 @@ console.log('submitedMedic',submittedMedicaments)
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col bg-gray-100 p-6 rounded-lg mx-auto shadow-lg border-2 border-r-customBlue">
+     
+  <TextField
+          label={t('UserName')}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+      
+          fullWidth
+          margin="normal"
+        />
         <Typography sx={{ fontFamily: 'Homemade Apple' }} variant="h5" gutterBottom>
           {t('Add a drug')}
         </Typography>
-
-        <TextField
+  <TextField
           label={t('Drug name')}
           value={nom}
           onChange={(e) => setNom(e.target.value)}
@@ -120,7 +131,6 @@ console.log('submitedMedic',submittedMedicaments)
           fullWidth
           margin="normal"
         />
-
         <Button
           component="label"
           role={undefined}
