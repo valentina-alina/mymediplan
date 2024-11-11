@@ -18,7 +18,7 @@ const ListeMedicaments = lazy(() => import('./ListeMedicaments.tsx'));
 const Formulaire = lazy(() => import('./Formulaire.tsx'));
 
 const Planner: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   // console.log('i18n', i18n);
   const [joursData, setJoursData] = useState<{ [jour: number]: Medicament[] }>({});
   const [medicamentsList, setMedicamentsList] = useState<Medicament[]>([]);
