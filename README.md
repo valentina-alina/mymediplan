@@ -45,8 +45,8 @@ MyMediPlan Planner est une application web développée en **React**, **TypeScri
 
 ## Technologies utilisées
 
-- **React** avec **TypeScript** pour une expérience de développement typée et robuste
-- **Vite** pour un démarrage rapide et une optimisation de l'application
+- **React** avec **TypeScript** 
+- **Vite**
 - **Local Storage** pour la persistance des données
 - **Material UI** pour le style de l'application
 - **JSON** pour la gestion multilingue
