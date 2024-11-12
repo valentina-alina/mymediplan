@@ -12,9 +12,7 @@ MyMediPlan Planner est une application web développée en **React**, **TypeScri
 - **Gestion des types de médicaments** : Choisissez parmi des types de médicaments préconfigurés avec des images associées (ex. pilule, cuillère).
 - **Multilingue** : Support pour plusieurs langues via un fichier JSON de dictionnaire (ex : anglais, français).
 
-## Aperçu de l'interface
 
-![[Pasted image 20241112134346.png]]
 ## Prérequis
 
 - **Node.js** version 14 ou supérieure
