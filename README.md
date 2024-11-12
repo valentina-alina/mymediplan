@@ -36,7 +36,7 @@ MyMediPlan Planner est une application web développée en **React**, **TypeScri
 
 1. **Remplissez le formulaire** : Entrez le nom de l'utilisateur (facultatif) , le mon du médicament, nombre d'unités de chaque médicament (par ex., comprimés, cuillères,....), la durée du traitement en jours, et le jour de début du traitement., les périodes de la journée.
 2. **Générer le PDF pour l'impression**.
-3. **Enregistrer le planning** : Les données sont enregistrées dans le stockage local, permettant une récupération même après fermeture de l'application.
+3. **Enregistrer le planning** : Les données sont enregistrées dans le localstorage, permettant une récupération même après fermeture de l'application.
 4. **Changer la langue** : Utilisez le menu de sélection de langue pour changer la langue de l'interface.
 
 ## Structure du projet
