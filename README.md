@@ -5,6 +5,10 @@
 
 MyMediPlan Planner est une application web développée en **React**, **TypeScript**, et **Vite** permettant de générer un tableau de planification des médicaments pour des prescriptions médicales. L'application aide les utilisateurs (patients ou soignants) à organiser la prise de médicaments par jour, en indiquant les doses et les types de médicaments nécessaires pour chaque jour du traitement.
 
+## Interface
+![image](https://github.com/user-attachments/assets/7335d2cb-43c8-45ce-b6c6-634e59946754)
+
+
 ## Fonctionnalités
 
 - **Création de planning de médicaments** : Planifier les doses journalières de différents types de médicaments (pilules, cuillères, sachets, etc.).
