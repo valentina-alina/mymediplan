@@ -39,10 +39,6 @@ MyMediPlan Planner est une application web développée en **React**, **TypeScri
 3. **Enregistrer le planning** : Les données sont enregistrées dans le localstorage, permettant une récupération même après fermeture de l'application.
 4. **Changer la langue** : Utilisez le menu de sélection de langue pour changer la langue de l'interface.
 
-## Structure du projet
-
-
-
 ## Technologies utilisées
 
 - **React** avec **TypeScript** 
@@ -50,4 +46,7 @@ MyMediPlan Planner est une application web développée en **React**, **TypeScri
 - **Local Storage** pour la persistance des données
 - **Material UI** pour le style de l'application
 - **JSON** pour la gestion multilingue
+
+## Url du projet en phase de test : 
+https://mymediplan.onrender.com/
 
