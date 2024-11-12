@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# MyMediPlan
+
+## Description
+
+MyMediPlan Planner est une application web développée en **React**, **TypeScript**, et **Vite** permettant de générer un tableau de planification des médicaments pour des prescriptions médicales. L'application aide les utilisateurs (patients ou soignants) à organiser la prise de médicaments par jour, en indiquant les doses et les types de médicaments nécessaires pour chaque jour du traitement.
+
+## Fonctionnalités
+
+- **Création de planning de médicaments** : Planifier les doses journalières de différents types de médicaments (pilules, cuillères, sachets, etc.).
+- **Formulaire de prescription** : Saisissez des informations sur le nom de l'utilisateur, le nom et la photo du médicament, la posologie, la quantité,  la durée du traitement, et le début du traitement.
+- **Persistance des données** : Les données de prescription sont stockées en local (Local Storage) pour être conservées entre les sessions et pouvoir être récupérées après une fermeture de l’application. Un bouton de refresh permet ensuite de nettoyer le planning pour en créer un nouveau.
+- **Gestion des types de médicaments** : Choisissez parmi des types de médicaments préconfigurés avec des images associées (ex. pilule, cuillère).
+- **Multilingue** : Support pour plusieurs langues via un fichier JSON de dictionnaire (ex : anglais, français).
+
+## Aperçu de l'interface
+
+![[Pasted image 20241112134346.png]]
+## Prérequis
+
+- **Node.js** version 14 ou supérieure
+- **npm** ou **yarn** pour gérer les packages
+
+## Installation
+
+1. **Cloner le dépôt** :
+`git clone https://github.com/valentina-alina/prescription.git`
+`cd prescription`
+   
+1. **Installer les dépendances** :
+`npm install # ou yarn install`
+
+3. **Démarrer l'application** :
+`npm run dev # ou yarn dev
+
+4. **Ouvrez votre navigateur et allez à l’adresse suivante :**
+`http://localhost:5173`
+## Utilisation
+
+1. **Remplissez le formulaire** : Entrez le nom de l(utilisateur (facultatif) , le mon du médicament, nombre d'unités de chaque médicament (par ex., comprimés, cuillères,....), la durée du traitement en jours, et le jour de début du traitement., les périodes de la journée.
+2. **Générer le PDF pour l'impression**.
+3. **Enregistrer le planning** : Les données sont enregistrées dans le stockage local, permettant une récupération même après fermeture de l'application.
+4. **Changer la langue** : Utilisez le menu de sélection de langue pour changer la langue de l'interface.
+
+## Structure du projet
 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies utilisées
 
-## Expanding the ESLint configuration
+- **React** avec **TypeScript** pour une expérience de développement typée et robuste
+- **Vite** pour un démarrage rapide et une optimisation de l'application
+- **Local Storage** pour la persistance des données
+- **Material UI** pour le style de l'application
+- **JSON** pour la gestion multilingue
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
